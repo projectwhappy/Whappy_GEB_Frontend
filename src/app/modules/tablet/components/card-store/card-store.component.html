@@ -1,0 +1,16 @@
+<div class="card card-store">
+  <div
+    class="card-store__img"
+    [ngStyle]="{ 'background-image': 'url(' + store.imageUrl + ')' }"
+  ></div>
+  <div class="card-store__data-wrapper">
+    <p class="card-store__title">{{ store.name }}</p>
+    <p class="card-store__info">{{ store.address }}</p>
+    <div class="card-store__call-wrapper">
+      <!-- If !== selected btn + btn--outlined -->
+      <button class="btn btn--outlined" (click)="sendIsSelected()">
+        Click me
+      </button>
+    </div>
+  </div>
+</div>

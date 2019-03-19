@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {TabletComponent} from './tablet.component';
 import { ChooseStoreComponent } from './pages/choose-store/choose-store.component';
+import { EventManagerComponent } from './pages/event-manager/event-manager.component';
 
 const routes: Routes = [
   {
@@ -10,8 +11,14 @@ const routes: Routes = [
     children:[
       {
         path: '',
+        component: EventManagerComponent,
+      },
+      {
+        path: '/chooseStore',
         component: ChooseStoreComponent,
+
       }
+
     ]
   }
 ];
