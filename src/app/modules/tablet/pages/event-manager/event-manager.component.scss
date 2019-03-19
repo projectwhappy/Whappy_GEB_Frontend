@@ -1,0 +1,101 @@
+@import "~src/styles/common";
+
+.event-banner {
+  background-color: rgba(0, 0, 0, 0.08);
+  padding: 6rem 2.4rem 3.2rem 2.4rem;
+
+  .event-banner__title {
+    font-size: 3.2rem;
+    font-weight: bold;
+    text-align: center;
+
+    margin-bottom: 2.4rem;
+  }
+
+  .event-banner__description {
+    margin-bottom: 4.8rem;
+  }
+
+  .event-banner__call-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.participant-list-wrapper {
+  padding: 6rem 0;
+
+  .participant-list__info {
+    text-align: center;
+    margin-bottom: 2.4rem;
+  }
+
+  .participant-list {
+    padding: 0 4.8rem;
+
+    .participant-list__item {
+      display: flex;
+      padding: 1.2rem;
+      border-radius: 0.4rem;
+      align-items: center;
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: $transparent_hover;
+      }
+
+      &:active {
+        background-color: $transparent_active;
+      }
+
+      .participant-list__item__img {
+        height: 4.8rem;
+        width: 4.8rem;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.48);
+        color: white;
+        margin-right: 2.4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.4rem;
+        user-select: none; 
+      }
+
+      .participant-list__item__label {
+        color: rgba(0, 0, 0, 0.48);
+        font-size: 1.8rem;
+      }
+
+      &.checked {
+        .participant-list__item__img {
+          background-color: black;
+        }
+
+        .participant-list__item__label {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+.search-input-wrapper {
+  height: 4.8rem;
+  margin-bottom: 2.4rem;
+
+  .search-input {
+    background-color: rgba(0, 0, 0, 0.08);
+    width: 100%;
+    height: 100%;
+    padding: 0 1.2rem;
+
+    border: none;
+    font-size: 1.8rem;
+
+    &::placeholder {
+        color: rgba(0, 0, 0, 0.48);
+    }
+  }
+}
