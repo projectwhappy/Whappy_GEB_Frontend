@@ -10,11 +10,11 @@ const routes: Routes = [
     component: TabletComponent,
     children:[
       {
-        path: '',
+        path: '/event',
         component: EventManagerComponent,
       },
       {
-        path: '/chooseStore',
+        path: '',
         component: ChooseStoreComponent,
 
       }
