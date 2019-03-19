@@ -1,3 +1,6 @@
+// Our default
+@import "~src/styles/common";
+
 html,
 body,
 div,
@@ -130,6 +133,9 @@ button:focus {
     outline: none;
 }
 
+
+//** Global Style */
+
 * {
   box-sizing: border-box;
 }
@@ -161,4 +167,39 @@ body {
   -webkit-font-feature-settings: "liga";
   font-feature-settings: "liga";
   font-variant-ligatures: common-ligatures;
+}
+
+
+// Global resposive
+/*
+$break_phone: 37.5em; //600px
+$break_tab_port: 56.25em; //900px
+$break_tab_land: 75em; 
+$break_desk_big: 112.5em;
+*/
+
+@media screen and (max-width: $break_tab_land) {
+  html {
+    font-size: 50%;
+  }
+
+}
+
+@media screen and (max-width: $break_tab_port) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media screen and (max-width: $break_phone) {
+  html {
+    font-size: 50%;
+  }
+}
+
+
+@media screen and (min-width: $break_desk_big) {
+  html {
+    font-size: 75%;
+  }
 }
