@@ -3,8 +3,23 @@
 .cards-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
+
+  .card-wrapper {
+    flex: 0 0 calc(50% - 1.2rem);
+    margin-bottom: 2.4rem;
+
+    @media only screen and (max-width: $break_phone) {
+      flex: 0 0 100%;
+    }
+
+
+
+  }
+
 }
+
+
 
 
 /** Nav */
@@ -52,7 +67,7 @@
       cursor: pointer;
       margin-bottom: 1.2rem;
 
-      @media screen and (max-width: $break_tab_port) {
+      @media only screen and (max-width: $break_tab_port) {
         font-size: 2.4rem;
         margin-bottom: 1.8rem;
       }
@@ -73,3 +88,8 @@
   }
 }
 /* End Nav */
+
+
+app-card-store {
+
+}

@@ -7,10 +7,11 @@ import { EventManagerComponent } from './pages/event-manager/event-manager.compo
 const routes: Routes = [
   {
     path: '',
+  //redirectTo: 'choose',
     component: TabletComponent,
     children:[
       {
-        path: '/event',
+        path: 'event',
         component: EventManagerComponent,
       },
       {

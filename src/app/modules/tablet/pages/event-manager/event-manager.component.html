@@ -43,13 +43,11 @@
           </div>
         </div>
       </label>
-
-      <li class="participant-list__item">
-        <div class="participant-list__item__img">M</div>
-        <p class="participant-list__item__label">
-          Marco Marco
-        </p>
-      </li>
+      <ng-container *ngFor="let participant of participants; let i = index">
+        <app-list-item-participant [participant]="participant" (isSelected)="participantSelected(participant)">
+        </app-list-item-participant>
+      </ng-container>
+      <!--
       <li class="participant-list__item">
         <div class="participant-list__item__img">F</div>
         <p class="participant-list__item__label">
@@ -62,6 +60,8 @@
           Marco Marco
         </p>
       </li>
+      -->
+
     </ul>
   </div>
 </div>
