@@ -1,9 +1,95 @@
 @import "~src/styles/common";
 
-
 .cards-container {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;   
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .card-wrapper {
+    flex: 0 0 calc(50% - 1.2rem);
+    margin-bottom: 2.4rem;
+
+    @media only screen and (max-width: $break_phone) {
+      flex: 0 0 100%;
+    }
+
+
+
+  }
+
 }
 
+
+
+
+/** Nav */
+.nav {
+  background-color: $primary_color_solid;
+  position: fixed;
+  z-index: 1000;
+  height: 100%;
+  padding: 2.4rem;
+  color: white;
+
+  .nav__close {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+
+    cursor: pointer;
+
+    .nav__close__icon {
+      display: block;
+      fill: $secondary_color_solid;
+      width: 3.2rem;
+      height: 3.2rem;
+
+      &:hover {
+        fill: $secondary_color_solid_hover;
+      }
+
+      &:active {
+        fill: $secondary_color_solid_active;
+      }
+    }
+  }
+
+  .nav__list {
+    padding: 3.2rem 7.2rem 3.2rem 0;
+
+    .nav__list__item {
+      background-color: transparent;
+      border: none;
+      padding: 0;
+
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      margin-bottom: 1.2rem;
+
+      @media only screen and (max-width: $break_tab_port) {
+        font-size: 2.4rem;
+        margin-bottom: 1.8rem;
+      }
+
+      &:hover {
+        color: $secondary_color_solid_hover;
+      }
+
+      &:active {
+        color: $secondary_color_solid_active;
+      }
+
+      &.selected {
+        color: $secondary_color_solid;
+        cursor: default;
+      }
+    }
+  }
+}
+/* End Nav */
+
+
+app-card-store {
+
+}

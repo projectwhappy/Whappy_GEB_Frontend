@@ -127,38 +127,5 @@ input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  width: 100%;
-  font-size: 62.5%;
-}
-
-body {
-  position: relative;
-  font-family: sans-serif;
-  font-size: 1.8rem;
-
-  line-height: 145%;
-  font-weight: 400;
-
-  font-variant: tabular-nums;
-  -moz-font-feature-settings: "tnum";
-  -webkit-font-feature-settings: "tnum";
-  font-feature-settings: "tnum";
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -moz-font-feature-settings: "liga";
-  -moz-font-feature-settings: "liga";
-  -ms-font-feature-settings: "liga";
-  -o-font-feature-settings: "liga";
-  -webkit-font-feature-settings: "liga";
-  font-feature-settings: "liga";
-  font-variant-ligatures: common-ligatures;
+  outline: none;
 }

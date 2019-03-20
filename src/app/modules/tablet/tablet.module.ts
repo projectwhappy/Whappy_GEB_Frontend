@@ -9,6 +9,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { EventManagerComponent } from './pages/event-manager/event-manager.component';
 import { CardStoreComponent } from './components/card-store/card-store.component';
 import { CountdownComponent } from './components/countdown/countdown.component';
+import { ListItemParticipantComponent } from './components/list-item-participant/list-item-participant.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CountdownComponent } from './components/countdown/countdown.component';
     EventManagerComponent,
     CardStoreComponent,
     CountdownComponent,
+    ListItemParticipantComponent,
   ],
   imports: [
     SharedModule,

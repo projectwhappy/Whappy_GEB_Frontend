@@ -8,14 +8,15 @@ import { EventManagerComponent } from './pages/event-manager/event-manager.compo
 const routes: Routes = [
   {
     path: '',
+  //redirectTo: 'choose',
     component: TabletComponent,
     children:[
       {
-        path: '',
+        path: 'event',
         component: EventManagerComponent,
       },
       {
-        path: '/chooseStore',
+        path: '',
         component: ChooseStoreComponent,
       },
       {
