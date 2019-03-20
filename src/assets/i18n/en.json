@@ -1,5 +1,8 @@
 {
     "Choose store": "Choose store! {{value}}",
     "Valentines day promotion": "Valentine's day promotion",
-    "SS19 Private Event": "SS19 Private Event"
+    "SS19 Private Event": "SS19 Private Event",
+    "February":"February",
+    "Only":"Only",
+    "reservations remaining": "reservations remaining"
 }

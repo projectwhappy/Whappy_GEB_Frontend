@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Landing11Component } from './landing11.component';
+import { CountdownComponent } from './countdown.component';
 
-describe('Landing11Component', () => {
-  let component: Landing11Component;
-  let fixture: ComponentFixture<Landing11Component>;
+describe('CountdownComponent', () => {
+  let component: CountdownComponent;
+  let fixture: ComponentFixture<CountdownComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Landing11Component ]
+      declarations: [ CountdownComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Landing11Component);
+    fixture = TestBed.createComponent(CountdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
