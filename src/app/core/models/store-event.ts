@@ -1,6 +1,6 @@
 import { Participant } from './participant';
 
-export interface Event{
+export interface StoreEvent {
     code: string;
     label: string;
     description: string;

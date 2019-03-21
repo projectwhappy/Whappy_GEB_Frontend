@@ -1,7 +1,8 @@
 import { Participant } from './participant';
+import {StoreEvent} from './store-event';
 
 export interface EventWithParticipants {
-    event: Event;
+    event: StoreEvent;
     address: {
         name: string;
         address: string;

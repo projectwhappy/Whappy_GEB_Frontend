@@ -4,11 +4,10 @@
   </h1>
   <div class="event-banner">
     <h2 class="event-banner__title">
-      Fall Pre-sale
+      {{ event?.event.label}}
     </h2>
     <p class="event-banner__description">
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-      nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+     {{event?.event.description}}
     </p>
     <div class="event-banner__call-wrapper">
       <button class="btn">
@@ -17,7 +16,7 @@
     </div>
   </div>
   <div class="participant-list-wrapper">
-    <p class="participant-list__info">invitati 21 di 80</p>
+    <p class="participant-list__info">invitati {{event?.participants.checked_in}} di {{event?.participants.total}}</p>
 
     <ul class="participant-list">
       <label>
@@ -26,6 +25,7 @@
             class="search-input"
             type="text"
             name="search"
+            [(ngModel)]="searchText"
             placeholder="Search..."
           />
           <div class="search-input__icon">
@@ -37,14 +37,13 @@
             >
               <path fill="none" d="M0 0h24v24H0V0z" />
               <path
-                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-              />
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
             </svg>
           </div>
         </div>
       </label>
-      <ng-container *ngFor="let participant of participants; let i = index">
-        <app-list-item-participant [participant]="participant" (isSelected)="participantSelected(participant)">
+      <ng-container *ngFor="let participant of getParticipants(); let i = index">
+        <app-list-item-participant [participant]="participant" (isSelected)="confirmParticipant(participant)">
         </app-list-item-participant>
       </ng-container>
       <!--

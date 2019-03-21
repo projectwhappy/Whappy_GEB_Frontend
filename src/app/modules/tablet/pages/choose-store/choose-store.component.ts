@@ -11,12 +11,12 @@ import { Router } from '@angular/router';
 })
 export class ChooseStoreComponent implements OnInit {
   public stores: Store[] = [];
-  
-  constructor(private storeService: StoreService,
-    private storeState: StoreStateService,
-    private router: Router) { 
 
-    this.storeService.getStores().then((stores: Store[])=> {
+  constructor(private storeService: StoreService,
+              private storeState: StoreStateService,
+              private router: Router) {
+
+    this.storeService.getStores().then((stores: Store[]) => {
       this.stores = stores;
     });
   }
@@ -25,7 +25,9 @@ export class ChooseStoreComponent implements OnInit {
   }
 
   public storeSelected(store: Store) {
-    this.storeState.setCurrentStoreId(store.id);  
+    this.storeState.setCurrentStoreId(store.id);
     this.router.navigate(['/event']);
   }
+
+
 }
