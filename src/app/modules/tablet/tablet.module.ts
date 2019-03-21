@@ -9,6 +9,7 @@ import {EventManagerComponent} from './pages/event-manager/event-manager.compone
 import {CardStoreComponent} from './components/card-store/card-store.component';
 import {ListItemParticipantComponent} from './components/list-item-participant/list-item-participant.component';
 import {EventConfirmDialogComponent} from './components/event-confirm-dialog/event-confirm-dialog.component';
+import { NewClientFormComponent } from './pages/new-client-form/new-client-form.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {EventConfirmDialogComponent} from './components/event-confirm-dialog/eve
     CardStoreComponent,
     ListItemParticipantComponent,
     EventConfirmDialogComponent,
+    NewClientFormComponent,
   ],
   imports: [
     SharedModule,
