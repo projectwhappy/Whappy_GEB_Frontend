@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Store } from "src/app/core/models/store";
+import { Store } from 'src/app/core/models/store';
 
 @Component({
   selector: "app-card-store",

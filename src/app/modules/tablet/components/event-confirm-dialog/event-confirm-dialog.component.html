@@ -1,0 +1,8 @@
+<h1 class="modal__title event-confirm__title" mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+  <p class="modal__text event-confirm__text" >Aggiungere {{participant.fullname}} all'evento?</p>
+</div>
+<div class="modal__call-wrapper event-confirm__call-wrapper" mat-dialog-actions>
+  <button class="btn btn--text" mat-button (click)="dialogRef.close()"> No Thanks</button>
+  <button class="btn modal__main-call event-confirm__main-call" mat-button (click)="confirmParticipant()" >Ok</button>
+</div>

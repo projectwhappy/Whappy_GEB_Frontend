@@ -3,6 +3,11 @@
 @import "styles/global_styles";
 
 // Our components
+@import "styles/input_text";
 @import "styles/button";
 @import "styles/page";
+@import "styles/modal";
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

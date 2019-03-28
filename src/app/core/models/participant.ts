@@ -1,6 +1,5 @@
 export interface Participant {
-    id: string;
-    firstName: string;
-    lastName: string;
-    checked: boolean;
+    code: string;
+    fullname: string;
+    checked_in: string;
 }

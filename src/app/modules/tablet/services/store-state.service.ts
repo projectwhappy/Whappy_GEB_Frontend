@@ -19,7 +19,8 @@ export class StoreStateService {
     return this.currentStoreId;
   }
 
-  public setCurrentStoreId(_id: string) {
-    this.currentStoreId = _id;
+  public setCurrentStoreId(id: string) {
+    this.currentStoreId = id;
+    localStorage.setItem(this.CURRENT_STORE_ID, id);
   }
 }

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from 'src/app/core/models/store';
-import { StoreService } from 'src/app/core/http/store.service';
-import { StoreStateService } from '../../services/store-state.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Store} from 'src/app/core/models/store';
+import {StoreService} from 'src/app/core/http/store.service';
+import {StoreStateService} from '../../services/store-state.service';
+import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
+import {StoreConfirmDialogComponent} from '../../components/store-confirm-dialog/store-confirm-dialog.component';
 
 @Component({
   selector: 'app-choose-store',
@@ -11,12 +13,15 @@ import { Router } from '@angular/router';
 })
 export class ChooseStoreComponent implements OnInit {
   public stores: Store[] = [];
-  
-  constructor(private storeService: StoreService,
-    private storeState: StoreStateService,
-    private router: Router) { 
 
-    this.storeService.getStores().then((stores: Store[])=> {
+
+  constructor(private storeService: StoreService,
+              private storeState: StoreStateService,
+              private router: Router,
+              public dialog: MatDialog,
+  ) {
+
+    this.storeService.getStores().then((stores: Store[]) => {
       this.stores = stores;
     });
   }
@@ -25,7 +30,12 @@ export class ChooseStoreComponent implements OnInit {
   }
 
   public storeSelected(store: Store) {
-    this.storeState.setCurrentStoreId(store.id);  
-    this.router.navigate(['/event']);
+    const dialogRef = this.dialog.open(StoreConfirmDialogComponent, {
+      width: 'calc(100% - 9.6rem)',
+      data: {code: store.id}
+    });
+
   }
+
+
 }

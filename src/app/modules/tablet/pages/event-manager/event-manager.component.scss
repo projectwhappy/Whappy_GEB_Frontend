@@ -41,7 +41,6 @@
 }
 
 .search-input-wrapper {
-
   height: 4.8rem;
   margin-bottom: 2.4rem;
   background-color: rgba(0, 0, 0, 0.08);
@@ -50,18 +49,7 @@
 
   .search-input {
     background-color: transparent;
-    flex: 1;
-    
-    width: 100%;
-    height: 100%;
     padding: 0 1.2rem;
-
-    border: none;
-    font-size: 1.8rem;
-
-    &::placeholder {
-        color: rgba(0, 0, 0, 0.48);
-    }
   }
 
   .search-input__icon {

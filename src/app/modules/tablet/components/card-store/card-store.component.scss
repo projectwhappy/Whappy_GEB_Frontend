@@ -1,9 +1,9 @@
+@import "~src/styles/common";
+
 .card-store {
   background-color: white;
   position: relative;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 0.6rem 2.4rem 0 rgba(0, 0, 0, 0.04), 0 0.4rem 1.2rem 0 rgba(0, 0, 0, 0.04);
-
-
+  box-shadow: $elevation-2;
 
   .card-store__img {
     padding-bottom: 56.25%;

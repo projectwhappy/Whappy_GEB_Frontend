@@ -1,0 +1,87 @@
+@import "~src/styles/common";
+
+.nav {
+  background-color: $primary_color_solid;
+  position: fixed;
+  z-index: 2000;
+  height: 100%;
+  min-width: 28rem;
+  padding: 2.4rem;
+  color: white;
+  transform: translateX(-100%);
+  transition: transform 250ms;
+  transition-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+
+
+  &.visible {
+    transform: translateX(0);
+    box-shadow: $elevation-4;
+    transition: transform 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0.0, 1, 1);
+  }
+
+
+  .nav__close {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+
+    cursor: pointer;
+
+    .nav__close__icon {
+      display: block;
+      fill: $secondary_color_solid;
+      width: 3.2rem;
+      height: 3.2rem;
+
+      &:hover {
+        fill: $secondary_color_solid_hover;
+      }
+
+      &:active {
+        fill: $secondary_color_solid_active;
+      }
+    }
+  }
+
+  .nav__list {
+    padding: 3.2rem 1.2rem 3.2rem 1.2rem;
+
+    .nav__list__item {
+      background-color: transparent;
+      border: none;
+      width: 100%;
+      padding: 0.6rem 1.2rem;
+
+      color: white;
+      font-size: 2rem;
+      line-height: 3.2rem;
+      cursor: pointer;
+      margin: 1.2rem 0;
+      text-align: left;
+
+
+      &:hover {
+        color: $secondary_color_solid_hover;
+      }
+
+      &:active {
+        color: $secondary_color_solid_active;
+      }
+
+      &.selected {
+
+        /*+ Prova trash */
+        background-color: $secondary_color_solid;
+        color: rgba(0, 0, 0, 0.98);
+        padding: 0.6rem 1.2rem;
+        border-radius: 2px;
+        background: linear-gradient(to bottom right, rgb(214, 188, 105), rgb(247, 238, 173) 56%, rgb(193, 172, 81));
+
+        /** Default */
+        /* color: $secondary_color_solid; */
+        cursor: default;
+      }
+    }
+  }
+}

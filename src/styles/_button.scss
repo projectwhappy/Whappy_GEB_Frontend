@@ -1,45 +1,75 @@
 @import "~src/styles/common";
 
 .btn {
-    display: inline-block;
-    padding: 0.8rem 1.6rem;
-    text-align: center;
-    cursor: pointer;
+  display: inline-block;
+  padding: 1rem 1.6rem;
+  text-align: center;
+  cursor: pointer;
 
-    border:  1px solid $primary_color_solid;
-    background-color: $primary_color_solid;
-    color: white;
+  border: 1px solid $primary_color_solid;
+  background-color: $primary_color_solid;
+  color: white;
+  font-size: 1.8rem;
 
-    font-weight: medium;
-    font-size: 1.8rem;
+  &:hover {
+    border: 1px solid $primary_color_solid_hover;
+    background-color: $primary_color_solid_hover;
+  }
 
-    &:hover {
-        transform: translateY(-1px);
-        border:  1px solid $primary_color_solid_hover;
-        background-color: $primary_color_solid_hover;
-    }
+  &:active {
+    border: 1px solid $primary_color_solid_active;
+    background-color: $primary_color_solid_active;
+  }
+}
 
-    &:active {
-        border:  1px solid $primary_color_solid_active;
-        background-color: $primary_color_solid_active;
-    }
+
+.btn--secondary {
+  border: 1px solid $secondary_color_solid;
+  background-color: $secondary_color_solid;
+  color: rgba(0, 0, 0, 0.98);
+
+  &:hover {
+    border: 1px solid $secondary_color_solid_hover;
+    background-color: $secondary_color_solid_hover;
+  }
+
+  &:active {
+    border: 1px solid $secondary_color_solid_active;
+    background-color: $secondary_color_solid_active;
+  }
 }
 
 
 .btn--outlined {
-    color: $primary_color_solid;
-    border:  1px solid $primary_color_solid;
-    background-color: transparent;
+  color: $primary_color_solid;
+  border: 1px solid $primary_color_solid;
+  background-color: transparent;
 
 
+  &:hover {
+    background-color: $transparent_hover;
+  }
 
-    &:hover {
-        background-color: $transparent_hover;
-    }
+  &:active {
+    background-color: $transparent_active;
+  }
+}
 
-    &:active {
-        background-color: $transparent_active;
-    }
+.btn--text {
+  color: $primary_color_solid;
+  border: none;
+  background-color: transparent;
+
+
+  &:hover {
+    background-color: $transparent_hover;
+    border: none;
+  }
+
+  &:active {
+    background-color: $transparent_active;
+    border: none;
+  }
 }
 
 

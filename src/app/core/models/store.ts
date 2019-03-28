@@ -3,4 +3,5 @@ export interface Store {
     imageUrl?: string;
     name: string;
     address: string;
+    password?: string;
 }

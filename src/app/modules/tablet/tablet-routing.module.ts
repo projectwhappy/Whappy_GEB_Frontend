@@ -3,17 +3,18 @@ import {Routes, RouterModule} from '@angular/router';
 import {TabletComponent} from './tablet.component';
 import { ChooseStoreComponent } from './pages/choose-store/choose-store.component';
 import { LandingComponent } from './pages/landing/landing.component';
-import { EventManagerComponent } from './pages/event-manager/event-manager.component';
+import {NewClientFormComponent} from './pages/new-client-form/new-client-form.component';
+import {ChooseEventComponent} from './pages/choose-event/choose-event.component';
 
 const routes: Routes = [
   {
     path: '',
-  //redirectTo: 'choose',
+  // redirectTo: 'choose',
     component: TabletComponent,
-    children:[
+    children: [
       {
-        path: 'event',
-        component: EventManagerComponent,
+        path: 'events',
+        component: ChooseEventComponent,
       },
       {
         path: '',
@@ -22,8 +23,12 @@ const routes: Routes = [
       {
         path: 'landing',
         component: LandingComponent,
-      }
-    ]
+      },
+      {
+        path: 'form',
+        component: NewClientFormComponent,
+      },
+    ],
   }
 ];
 

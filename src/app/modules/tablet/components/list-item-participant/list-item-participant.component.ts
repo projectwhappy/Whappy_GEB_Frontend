@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
-import { Participant } from "src/app/core/models/participant";
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Participant} from 'src/app/core/models/participant';
 
 
 @Component({
@@ -10,14 +10,14 @@ import { Participant } from "src/app/core/models/participant";
 export class ListItemParticipantComponent implements OnInit {
   @Input() public participant: Participant;
   @Output() public isSelected = new EventEmitter();
-  constructor() { 
 
-    
+  constructor() {
+
+
     this.participant = {
-      id: "345ad45",
-      firstName: "Marco",
-      lastName: "Rossi",
-      checked: true
+      code: '345ad45',
+      fullname: 'Marco',
+      checked_in: ''
     };
 
 

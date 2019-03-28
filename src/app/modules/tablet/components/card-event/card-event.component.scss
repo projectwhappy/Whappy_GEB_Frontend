@@ -1,0 +1,45 @@
+@import "~src/styles/common";
+
+.card-event {
+  cursor: pointer;
+  display: flex;
+  background-color: white;
+  box-shadow: $elevation-2;
+  transition: all 0.25s cubic-bezier(.25,.8,.25,1);
+
+  &:hover {
+    background-color: $transparent_hover;
+    box-shadow: $elevation-4;
+  }
+
+  &:active {
+    background-color: $transparent_active;
+    box-shadow: $elevation-4;
+  }
+
+  @media only screen and (max-width: $break_phone) {
+    flex-direction: column;
+  }
+
+  .card-event__img-wrapper {
+    flex: 1;
+
+    .card-event__img {
+      width: 100%;
+      padding-bottom: calc((1 / 2) * 100%);
+      background-position: center;
+      background-size: cover;
+    }
+  }
+
+  .card-event__data-wrapper {
+    flex: 1;
+    padding: 2.4rem;
+
+    .card-event__title {
+      font-weight: bold;
+      font-size: 2.4rem;
+      margin-bottom: 1.2rem;
+    }
+  }
+}
