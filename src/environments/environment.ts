@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  serverAPI: 'https://vlad.devgeb.whappy.it/firstProject/web',
-  // serverAPI: 'http://192.168.7.117:8888',
+ // serverAPI: 'https://vlad.devgeb.whappy.it/firstProject/web',
+  serverAPI: 'http://192.168.7.117:8888',
 };
 
 /*

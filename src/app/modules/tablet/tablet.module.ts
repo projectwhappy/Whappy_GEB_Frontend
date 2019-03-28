@@ -10,6 +10,9 @@ import {CardStoreComponent} from './components/card-store/card-store.component';
 import {ListItemParticipantComponent} from './components/list-item-participant/list-item-participant.component';
 import {EventConfirmDialogComponent} from './components/event-confirm-dialog/event-confirm-dialog.component';
 import { NewClientFormComponent } from './pages/new-client-form/new-client-form.component';
+import { StoreConfirmDialogComponent } from './components/store-confirm-dialog/store-confirm-dialog.component';
+import { ChooseEventComponent } from './pages/choose-event/choose-event.component';
+import { CardEventComponent } from './components/card-event/card-event.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { NewClientFormComponent } from './pages/new-client-form/new-client-form.
     ListItemParticipantComponent,
     EventConfirmDialogComponent,
     NewClientFormComponent,
+    StoreConfirmDialogComponent,
+    ChooseEventComponent,
+    CardEventComponent,
   ],
   imports: [
     SharedModule,
@@ -27,6 +33,7 @@ import { NewClientFormComponent } from './pages/new-client-form/new-client-form.
   ],
   entryComponents: [
     EventConfirmDialogComponent,
+    StoreConfirmDialogComponent,
   ]
 })
 export class TabletModule {

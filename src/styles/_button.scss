@@ -9,12 +9,9 @@
   border: 1px solid $primary_color_solid;
   background-color: $primary_color_solid;
   color: white;
-
-  font-weight: medium;
   font-size: 1.8rem;
 
   &:hover {
-    transform: translateY(-1px);
     border: 1px solid $primary_color_solid_hover;
     background-color: $primary_color_solid_hover;
   }
@@ -40,8 +37,8 @@
     border: 1px solid $secondary_color_solid_active;
     background-color: $secondary_color_solid_active;
   }
-
 }
+
 
 .btn--outlined {
   color: $primary_color_solid;
@@ -55,6 +52,23 @@
 
   &:active {
     background-color: $transparent_active;
+  }
+}
+
+.btn--text {
+  color: $primary_color_solid;
+  border: none;
+  background-color: transparent;
+
+
+  &:hover {
+    background-color: $transparent_hover;
+    border: none;
+  }
+
+  &:active {
+    background-color: $transparent_active;
+    border: none;
   }
 }
 

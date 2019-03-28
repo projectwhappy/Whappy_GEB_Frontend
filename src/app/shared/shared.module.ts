@@ -5,12 +5,14 @@ import {FormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { NavComponent } from './components/nav/nav.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [TopBarComponent, NavComponent],
   imports: [
     CommonModule,
     MatDialogModule,
+    RouterModule
   ],
   exports: [
     CommonModule,
@@ -19,6 +21,7 @@ import { NavComponent } from './components/nav/nav.component';
     MatDialogModule,
     TopBarComponent,
     NavComponent,
+    RouterModule
   ]
 })
 export class SharedModule { }

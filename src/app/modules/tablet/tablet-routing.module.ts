@@ -4,6 +4,7 @@ import {TabletComponent} from './tablet.component';
 import { ChooseStoreComponent } from './pages/choose-store/choose-store.component';
 import { EventManagerComponent } from './pages/event-manager/event-manager.component';
 import {NewClientFormComponent} from './pages/new-client-form/new-client-form.component';
+import {ChooseEventComponent} from './pages/choose-event/choose-event.component';
 
 const routes: Routes = [
   {
@@ -12,8 +13,8 @@ const routes: Routes = [
     component: TabletComponent,
     children: [
       {
-        path: 'event',
-        component: EventManagerComponent,
+        path: 'events',
+        component: ChooseEventComponent,
       },
       {
         path: '',

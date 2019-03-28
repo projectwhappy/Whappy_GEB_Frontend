@@ -1,20 +1,21 @@
 @import "~src/styles/common";
 
 .cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  margin-left: -2.4rem;
+  margin-right: -2.4rem;
+
 
   .card-wrapper {
-    flex: 0 0 calc(33.33% - 2.4rem);
-    margin-bottom: 4.8rem;
+    display: inline-block;
+    padding: 2.4rem;
+    width: 33.33%;
 
 
     @media only screen and (max-width: $break_tab_land) {
-      flex: 0 0 calc(50% - 2.4rem);
+      width: 50%;
     }
     @media only screen and (max-width: $break_phone) {
-      flex: 0 0 100%;
+      width: 100%;
     }
 
   }
