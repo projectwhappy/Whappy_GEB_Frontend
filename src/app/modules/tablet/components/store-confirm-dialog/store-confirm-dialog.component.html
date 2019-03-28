@@ -1,0 +1,20 @@
+<h1 class="modal__title" mat-dialog-title>Password</h1>
+<div mat-dialog-content>
+  <p class="modal__text" >Inserisci la password del negozio</p>
+</div>
+<form (ngSubmit)="showPassword()">
+<div>
+  <label>
+    <span class="input__label">Password</span>
+    <input type="password" class="input-text password-input-text" [disabled]="isLoading" name="password" [(ngModel)]="inputPassword" placeholder="********"/>
+  </label>
+  <div class="input__error-message" *ngIf="inputError">{{inputError}}</div>
+</div>
+<div class="modal__call-wrapper" mat-dialog-actions>
+  <button type="button" (click)="dialogRef.close()" class="btn btn--text" mat-button>Annulla</button>
+  <button type="submit" [disabled]="isLoading" class="btn modal__main-call" mat-button>
+    <ng-container *ngIf="isLoading">Caricamento</ng-container>
+    <ng-container *ngIf="!isLoading">Ok</ng-container>
+  </button>
+</div>
+</form>
