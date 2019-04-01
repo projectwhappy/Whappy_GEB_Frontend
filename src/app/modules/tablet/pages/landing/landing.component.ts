@@ -3,7 +3,7 @@ import { Campaign } from 'src/app/core/models/campaign';
 import { PromotionInfo } from 'src/app/core/models/promotionInfo';
 import { ReservationInfo } from 'src/app/core/models/reservationInfo';
 import { InvitedInfo } from 'src/app/core/models/invitedInfo';
-import { Person } from 'src/app/core/models/person';
+import { Person } from 'src/app/core/models/Person';
 
 @Component({
   selector: 'app-landing',

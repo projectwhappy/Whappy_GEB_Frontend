@@ -11,13 +11,21 @@
   &::placeholder {
     color: rgba(0, 0, 0, 0.48);
   }
+
+  &.input-text--gray {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+}
+
+.input-text-area {
+  resize: none;
 }
 
 .input__label {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 .input__error-message {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: red;
 }

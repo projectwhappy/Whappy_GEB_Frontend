@@ -3,7 +3,6 @@ import {Routes, RouterModule} from '@angular/router';
 import {TabletComponent} from './tablet.component';
 import { ChooseStoreComponent } from './pages/choose-store/choose-store.component';
 import { LandingComponent } from './pages/landing/landing.component';
-import {NewClientFormComponent} from './pages/new-client-form/new-client-form.component';
 import {ChooseEventComponent} from './pages/choose-event/choose-event.component';
 
 const routes: Routes = [
@@ -23,10 +22,6 @@ const routes: Routes = [
       {
         path: 'landing',
         component: LandingComponent,
-      },
-      {
-        path: 'form',
-        component: NewClientFormComponent,
       },
     ],
   }

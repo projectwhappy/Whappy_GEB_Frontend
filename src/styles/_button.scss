@@ -20,6 +20,11 @@
     border: 1px solid $primary_color_solid_active;
     background-color: $primary_color_solid_active;
   }
+
+  &:disabled {
+    background-color: #aaaaaa;
+    border: 1px solid #aaaaaa;
+  }
 }
 
 
