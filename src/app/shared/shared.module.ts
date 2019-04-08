@@ -4,23 +4,28 @@ import { TranslateModule } from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule, MatStepperModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [ConfirmDialogComponent],
   imports: [
     CommonModule,
     MatDialogModule,
     MatStepperModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     CommonModule,
-    TranslateModule,
     FormsModule,
     MatDialogModule,
     MatStepperModule,
     RouterModule,
     ReactiveFormsModule,
+    TranslateModule,
+    ConfirmDialogComponent,
+  ],
+  entryComponents: [
+    ConfirmDialogComponent,
   ]
 })
 export class SharedModule { }

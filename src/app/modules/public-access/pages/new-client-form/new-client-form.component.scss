@@ -56,10 +56,10 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      margin-bottom: 2.4rem;
 
       .new-client-form__layout--item-short {
         flex: 0 1 calc(50% - 1.2rem);
-        margin-bottom: 2.4rem;
 
         @media only screen and (max-width: $break_phone) {
           flex: 0 1 100%;

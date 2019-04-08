@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StoreEvent} from '../../../../core/models/store-event';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,9 @@ import {StoreEvent} from '../../../../core/models/store-event';
 export class ChooseEventComponent implements OnInit {
   public storeEvents: StoreEvent[];
 
-  constructor() {
+  constructor(
+    private router: Router,
+  ) {
     // Mock
     this.storeEvents = [{
       code: 'PRESALEdlfkjsaljlsf',
@@ -32,7 +35,8 @@ export class ChooseEventComponent implements OnInit {
   ngOnInit() {
   }
   public eventSelected(storeEvent: StoreEvent) {
-    console.log(`Questo è l'evento selezionato ${storeEvent.code}`);
+    // console.log(`Questo è l'evento selezionato ${storeEvent.code}`);
+    this.router.navigate(['tablet/events', storeEvent.code]);
   }
 
 }

@@ -9,6 +9,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        loadChildren: '../modules/public-access/public-access.module#PublicAccessModule'
+      },
+      {
+        path: 'admin',
         loadChildren: '../modules/admin/admin.module#AdminModule'
       },
       {
@@ -16,8 +20,8 @@ const routes: Routes = [
         loadChildren: '../modules/tablet/tablet.module#TabletModule'
       },
       {
-        path: 'form',
-        loadChildren: '../modules/public-access/public-access.module#PublicAccessModule'
+        path: 'landing',
+        loadChildren: '../modules/landing/landing.module#LandingModule'
       },
     ]
   }

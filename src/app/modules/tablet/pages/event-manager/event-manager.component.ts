@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Participant} from 'src/app/core/models/participant';
 import {StoreStateService} from '../../services/store-state.service';
 import {EventService} from '../../../../core/http/event.service';
 import {EventWithParticipants} from '../../../../core/models/eventWithParticipants';
-import index from '@angular/cli/lib/cli';
 import {MatDialog} from '@angular/material';
 import {EventConfirmDialogComponent} from '../../components/event-confirm-dialog/event-confirm-dialog.component';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-event-manager',
@@ -14,26 +13,37 @@ import {EventConfirmDialogComponent} from '../../components/event-confirm-dialog
 })
 export class EventManagerComponent implements OnInit {
 
+  public eventCode: string;
   public event: EventWithParticipants;
   public searchText: string;
 
+
   constructor(
-    private storeStateService: StoreStateService,
     private eventService: EventService,
     public dialog: MatDialog,
+    private route: ActivatedRoute,
   ) {
   }
 
   ngOnInit() {
+    this.eventCode = this.route.snapshot.paramMap.get('event-code');
     this.refreshData();
   }
 
   public refreshData() {
+    this.eventService.getEventByEventCode(this.eventCode)
+      .then((event: EventWithParticipants) => {
+        this.event = event;
+      }, (err) => {
+        console.log(err);
+    });
+    /*
     this.eventService
       .getEventByStoreId(this.storeStateService.getCurrentStoreId())
       .then((event: EventWithParticipants) => {
         this.event = event;
       });
+    */
   }
 
   public getParticipants() {

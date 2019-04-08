@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {PeopleService} from '../../../../core/http/people.service';
+import {MatDialog} from '@angular/material';
+import {ConfirmDialogComponent} from '../../../../shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-new-client-form',
@@ -10,7 +12,11 @@ import {PeopleService} from '../../../../core/http/people.service';
 export class NewClientFormComponent implements OnInit {
   public form;
 
-  constructor(private fb: FormBuilder, private peopleService: PeopleService) {
+  constructor(
+    private fb: FormBuilder,
+    private peopleService: PeopleService,
+    private dialog: MatDialog,
+  ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
@@ -24,7 +30,6 @@ export class NewClientFormComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   get f() {
@@ -44,11 +49,22 @@ export class NewClientFormComponent implements OnInit {
     const vals = this.form.value;
     console.log(vals);
     if (this.form.valid) {
-      this.peopleService.createNewPeople({
-        ...vals,
-        preferredCommunication: 'email',
-        newsletterAcceptance: new Date(),
-      });
+      this.peopleService
+        .createNewPeople({
+          ...vals,
+          preferredCommunication: 'email',
+          newsletterAcceptance: new Date(),
+        })
+        .then(() => {
+          const dialogConfirm = this.dialog.open(ConfirmDialogComponent, {
+            width: '30rem',
+            data: {title: 'Benvenuto', text: 'Iscrizione completata.'}
+          });
+
+          dialogConfirm.afterClosed().subscribe(() => {
+            this.form.reset();
+          });
+        });
     } else {
     }
   }

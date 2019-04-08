@@ -1,0 +1,36 @@
+<div class="page-wrapper">
+
+  <div class="admin-login-form">
+    <h1 class="page__title">Log-in</h1>
+
+    <form  [formGroup]="form" (ngSubmit)="doAction()">
+
+      <div class="login__field">
+        <label>
+          <span class="input__label">Email</span>
+          <input class="input-text login__input-text" type="email" name="email" formControlName="email">
+        </label>
+      </div>
+
+      <div class="login__field">
+        <label>
+          <span class="input__label">password</span>
+          <input class="input-text login__input-text" type="password" name="password" formControlName="password">
+        </label>
+      </div>
+
+      <p *ngIf="loginErrors" class="error-">email or password errate</p>
+
+
+      <div class="login__call-wrapper">
+        <input [ngClass]="{'btn-loading' : isLoading}" [disabled]="form.invalid" class="btn" type="submit" value="Log in">
+      </div>
+
+    </form>
+
+    <!--
+    <a>Recupera password</a>
+    -->
+  </div>
+
+</div>

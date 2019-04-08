@@ -26,6 +26,7 @@ export class StoreConfirmDialogComponent implements OnInit {
 
   }
 
+  /* Rotto con il refactoring del flusso
   public showPassword() {
     this.inputError = null;
     this.isLoading = true;
@@ -45,4 +46,6 @@ export class StoreConfirmDialogComponent implements OnInit {
     });
     //alert(this.inputPassword);
   }
+
+*/
 }

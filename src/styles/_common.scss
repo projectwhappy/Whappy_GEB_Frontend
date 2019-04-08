@@ -26,24 +26,6 @@ $gray_light: #EEEEEE;
 $transparent_hover: rgba(0, 0, 0, 0.04);
 $transparent_active: rgba(0, 0, 0, 0.08);
 
-.bold{
-    font-weight: bold;
-}
-
-.center-text{
-    text-align:center;
-}
-
-.center-image{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.divider{
-    height:100px;
-}
-
 // Elevation shadow
 $elevation-0: 0 0 0 1px rgba(0, 0, 0, 0.08);
 $elevation-2: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 0.6rem 2.4rem 0 rgba(0, 0, 0, 0.04), 0 0.4rem 1.2rem 0 rgba(0, 0, 0, 0.04);
