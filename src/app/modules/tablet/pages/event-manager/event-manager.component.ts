@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {StoreStateService} from '../../services/store-state.service';
 import {EventService} from '../../../../core/http/event.service';
 import {EventWithParticipants} from '../../../../core/models/eventWithParticipants';
 import {MatDialog} from '@angular/material';
 import {EventConfirmDialogComponent} from '../../components/event-confirm-dialog/event-confirm-dialog.component';
-import {ActivatedRoute} from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {Participant} from '../../../../core/models/participant';
 
 @Component({
   selector: 'app-event-manager',
@@ -16,34 +16,38 @@ export class EventManagerComponent implements OnInit {
   public eventCode: string;
   public event: EventWithParticipants;
   public searchText: string;
+  public arrayOfCheckedPeople: Participant[];
+  private event$: any; // better way?
 
 
   constructor(
     private eventService: EventService,
     public dialog: MatDialog,
     private route: ActivatedRoute,
+    private router: Router,
+
   ) {
   }
 
   ngOnInit() {
-    this.eventCode = this.route.snapshot.paramMap.get('event-code');
-    this.refreshData();
+
+    this.eventCode = this.route.snapshot.paramMap.get('eventcode');
+    this.event$ = this.getData();
   }
 
-  public refreshData() {
-    this.eventService.getEventByEventCode(this.eventCode)
+  public getData() {
+    this.eventService.getEventByEventCodeWithInvitedPeopleConfirmed(this.eventCode)
       .then((event: EventWithParticipants) => {
+        // Assign event value
         this.event = event;
+
+        // Create an array of checked people
+        this.arrayOfCheckedPeople = this.event.participants.list.filter( (el) => {
+          return el.checked_in;
+        });
       }, (err) => {
         console.log(err);
-    });
-    /*
-    this.eventService
-      .getEventByStoreId(this.storeStateService.getCurrentStoreId())
-      .then((event: EventWithParticipants) => {
-        this.event = event;
       });
-    */
   }
 
   public getParticipants() {
@@ -56,7 +60,8 @@ export class EventManagerComponent implements OnInit {
         const participantToReturn = [];
 
         for (const participant of this.event.participants.list) {
-          const nameArray = participant.fullname.split(' ');
+          const fullName = participant.firstname + ' ' + participant.lastname;
+          const nameArray = fullName.split(' ');
           const textToSearch = this.searchText.split(' ');
           let allItemsMatch = true;
           for (const itemSearch of textToSearch) {
@@ -85,12 +90,12 @@ export class EventManagerComponent implements OnInit {
       width: '300px',
       data: {
         participant,
-        eventCode: this.event.event.code,
+        eventCode: this.event.code,
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
-        this.refreshData();
+        this.getData();
       }
     });
   }

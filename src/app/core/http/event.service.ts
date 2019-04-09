@@ -12,7 +12,8 @@ export class EventService {
   }
 
   public createNewEvent(body: StoreEvent) {
-    return this.http.post(environment.serverAPI + '/events', body).toPromise();
+    console.log(body);
+    return this.http.post(environment.serverAPI + '/events', body ).toPromise();
   }
 
   public sendEvent(eventCode, body) {
@@ -23,13 +24,21 @@ export class EventService {
     return this.http.get(environment.serverAPI + '/events').toPromise();
   }
 
+  // Da controllare
   public getEventByStoreId(id: string) {
     return this.http.get(environment.serverAPI + '/events/' + id + '/participants').toPromise();
   }
 
-  public getEventByEventCode(eventCode) {
-    return this.http.get( environment.serverAPI + '/events/' + eventCode).toPromise();
+  // Da controllare
+  public getEventByEventCodeWithInvitedPeopleInvited(eventCode) {
+    return this.http.get( environment.serverAPI + '/events/' + eventCode + '/invited_people?invitedFilter=invited').toPromise();
   }
+
+  public getEventByEventCodeWithInvitedPeopleConfirmed(eventCode) {
+    return this.http.get( environment.serverAPI + '/events/' + eventCode + '/invited_people?invitedFilter=confirmed').toPromise();
+  }
+
+
 
   public checkInPerson(eventCode: string, personCode: string) {
     return this.http.post(environment.serverAPI + '/events/' + eventCode + '/check_in_by_person', {

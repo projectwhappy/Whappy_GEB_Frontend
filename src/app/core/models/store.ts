@@ -1,6 +1,6 @@
 export interface Store {
-  code: string;
-  image?: string;
+  storeCode: string;
+  banner?: string;
   label: string;
   description: string;
   address?: {

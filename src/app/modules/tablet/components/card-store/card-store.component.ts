@@ -12,8 +12,8 @@ export class CardStoreComponent implements OnInit {
 
   constructor() {
     this.store = {
-      code: 'string',
-      image: 'string',
+      storeCode: 'string',
+      banner: 'string',
       label: 'string',
       description: 'string',
       address: {

@@ -11,17 +11,7 @@ export class ListItemParticipantComponent implements OnInit {
   @Input() public participant: Participant;
   @Output() public isSelected = new EventEmitter();
 
-  constructor() {
-
-
-    this.participant = {
-      code: '345ad45',
-      fullname: 'Marco',
-      checked_in: ''
-    };
-
-
-  }
+  constructor() {}
 
   ngOnInit() {
   }

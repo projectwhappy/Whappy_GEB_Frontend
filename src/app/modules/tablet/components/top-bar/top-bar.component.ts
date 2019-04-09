@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,12 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class TopBarComponent implements OnInit {
 
   public isNavOpen = false;
-  constructor() { }
+  @Input() public goBack = false;
+
+  constructor( private location: Location, ) { }
 
   ngOnInit() {
   }
 
   public toggleNav() {
     this.isNavOpen = !this.isNavOpen;
+  }
+
+  public backClicked() {
+    this.location.back();
   }
 }

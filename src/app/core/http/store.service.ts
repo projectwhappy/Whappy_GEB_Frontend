@@ -9,8 +9,8 @@ import {environment} from '../../../environments/environment';
 export class StoreService {
   private stores: Store[] = [
     {
-      code: '47f8c888-7164-42c8-8344-9a2cef95dd1a',
-      image: '',
+      storeCode: '47f8c888-7164-42c8-8344-9a2cef95dd1a',
+      banner: '',
       label: 'Store name test',
       description: 'string',
       address: {
@@ -23,8 +23,8 @@ export class StoreService {
       },
     },
     {
-      code: '2222-22',
-      image: '',
+      storeCode: '2222-22',
+      banner: '',
       label: 'Store name test 2',
       description: 'string',
       address: {
@@ -37,8 +37,8 @@ export class StoreService {
       },
     },
     {
-      code: '3333-33',
-      image: '',
+      storeCode: '3333-33',
+      banner: '',
       label: 'Store name test 3',
       description: 'string',
       address: {
@@ -51,8 +51,8 @@ export class StoreService {
       },
     },
     {
-      code: '4444-4',
-      image: '',
+      storeCode: '4444-4',
+      banner: '',
       label: 'Store name test 4',
       description: 'string',
       address: {
@@ -75,14 +75,20 @@ export class StoreService {
     return this.stores;
   }
 
+
+  public getStoreByStoreCode( storeCode: string ) {
+    return this.http.get( environment.serverAPI + /stores/ + storeCode).toPromise();
+  }
+
+  /*
   public async getStoreByCode(code: string) {
     this.stores.forEach(element => {
       if (code === element.code) {
         return element;
       }
-
     });
-  }
+    }
+    */
 
   /*
   public async checkPassword(code: string, pw: string) {

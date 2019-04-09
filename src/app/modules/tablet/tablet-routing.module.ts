@@ -20,7 +20,7 @@ const routes: Routes = [
         component: ChooseEventComponent,
       },
       {
-        path: 'events/:event-code',
+        path: 'events/:eventcode',
         component: EventManagerComponent,
       }
     ],
