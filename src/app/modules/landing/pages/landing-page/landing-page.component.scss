@@ -1,0 +1,163 @@
+@import "~src/styles/common";
+
+.event__head {
+  background-color: $black;
+  color: white;
+}
+
+.event__head__membership-text {
+  padding-top: 1.2rem;
+  text-align: center;
+}
+
+.membership-text__name {
+  color: $gold;
+  text-decoration: underline;
+}
+
+.event__img-wrapper {
+  width: calc(100% - 4.8rem);
+  max-width: 64em;
+  margin-left: auto;
+  margin-right: auto;
+
+  .event__img {
+    width: 100%;
+    padding-bottom: calc((1 / 2) * 100%);
+    transform: translate(0, 4.8rem);
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.event__body {
+  .event__body__title {
+    text-align: center;
+  }
+
+
+}
+
+// Event booking confirmed component
+.event-booking__container {
+  background-color: $gray_light;
+  display: flex;
+  margin: 4.8rem 0;
+
+  .event-booking__info-container {
+    padding: 1.2rem;
+    flex: 1;
+
+    .event-booking__info-container__title {
+      margin-bottom: 1.2rem;
+    }
+
+    .event-booking__info-container__data-container {
+      display: flex;
+      align-items: center;
+      padding-bottom: 1.2rem;
+
+      .event-booking__info-container__data__icon {
+        margin-right: 1.2rem;
+      }
+    }
+
+  }
+
+  .event-booking__qr-container {
+    width: 16rem;
+
+    .event-booking--qr {
+      padding-bottom: 100%;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+}
+
+
+
+// Countdown component
+.countdown-container {
+  text-align: center;
+  margin: 4.8rem 0;
+
+  .countdown-container__title {
+    margin-bottom: .6rem;
+  }
+
+  .countdown-container__text {
+    font-weight: 500;
+    font-size: 2.2rem;
+  }
+
+}
+
+
+
+
+
+/*
+
+.event--promotion__container__info {
+  display: flex;
+  padding-top: 10px;
+}
+
+.event--promotion__container__title {
+  padding: 10px;
+}
+
+.event--promotion__container__content {
+  padding-left: 10px;
+}
+
+.event--promotion__container__info {
+  padding-left: 10px;
+  // transform: translate(0px, 10px);
+}
+
+.event--promotion__container__info :nth-child(2) {
+  padding-left: 15px;
+  // transform: translate(0px, 10px);
+}
+
+//Landing 1
+.event--qr__img {
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+
+//Landing 2-1
+.event--countdown {
+  padding-top: 100px;
+}
+
+.input--field {
+  height: 30px;
+}
+
+.button--submit {
+  margin-left: 15px;
+  height: 30px;
+  background-color: black;
+  color: white;
+}
+
+.event--qr__img {
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+
+
+.bold {
+  font-weight: bold;
+}
+
+.center-text {
+  text-align: center;
+}
+
+*/

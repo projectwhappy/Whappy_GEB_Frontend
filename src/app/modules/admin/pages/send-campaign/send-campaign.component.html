@@ -1,0 +1,117 @@
+<app-top-bar [goBack]="true"></app-top-bar>
+<div class="page-wrapper">
+
+  <h1 class="page__title">Seleziona Target</h1>
+
+  <div class="target-preview">
+    Persone raggiunte: <span class="target-preview__number">{{ target?.total_targets.total }}</span>
+  </div>
+
+  <div>
+    <form [formGroup]="form" (ngSubmit)="sendCampaign()">
+
+      <div class="form__field">
+        <span class="input__label">Clienti negozio</span>
+        <div class="input__checkbox-wrapper">
+          <label class="input__checkbox-content">
+
+            <span *ngIf="!form.value.selectAll" class="input__checkbox__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="2.4rem" height="2.4rem" viewBox="0 0 24 24">
+                <path fill="none" d="M0 0h24v24H0V0z"/>
+                <path d="M19 5v14H5V5h14m2-2H3v18h18V3z"/>
+              </svg>
+            </span>
+
+            <span *ngIf="form.value.selectAll" class="input__checkbox__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="2.4rem" height="2.4rem" viewBox="0 0 24 24">
+                <path fill="none" d="M0 0h24v24H0V0z"/>
+                <path d="M21 3H3v18h18V3zM10 17l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </span>
+
+            <input class="input__checkbox-hide" type="checkbox" name="selectAll" formControlName="selectAll">
+            <span class="input__checkbox__label">Seleziona tutti i negozi</span>
+          </label>
+        </div>
+
+        <div class="checkbox-store-list">
+          <div formArrayName="stores" *ngFor="let store of form.controls.stores.controls; let i = index"
+               class="input__checkbox-wrapper">
+            <label class="input__checkbox-content">
+
+            <span *ngIf="!form.value.stores[i]" class="input__checkbox__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="2.4rem" height="2.4rem" viewBox="0 0 24 24">
+                <path fill="none" d="M0 0h24v24H0V0z"/>
+                <path d="M19 5v14H5V5h14m2-2H3v18h18V3z"/>
+              </svg>
+            </span>
+
+              <span *ngIf="form.value.stores[i]" class="input__checkbox__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="2.4rem" height="2.4rem" viewBox="0 0 24 24">
+                <path fill="none" d="M0 0h24v24H0V0z"/>
+                <path d="M21 3H3v18h18V3zM10 17l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </span>
+
+              <input class="input__checkbox-hide" type="checkbox" [name]='stores[i].storeCode' [formControlName]="i">
+              <span class="input__checkbox__label">{{ stores[i].label }}</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form__field ">
+        <span class="input__label">Età</span>
+        <div class="form__field__row">
+          <div class="age-form__field__row__short-item">
+            <input class="input-text input-text--gray" type="number" minlength="1" maxlength="3" name="fromAge"
+                   formControlName="fromAge">
+          </div>
+          <div class="age-form__field__row__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2.4rem" height="2.4rem" viewBox="0 0 24 24">
+              <path fill="none" d="M0 0h24v24H0V0z"/>
+              <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z"/>
+            </svg>
+          </div>
+          <div class="age-form__field__row__short-item ">
+            <input class="input-text input-text--gray" type="number" minlength="1" maxlength="3" name="toAge"
+                   formControlName="toAge">
+          </div>
+        </div>
+      </div>
+
+      <div class="form__field">
+        <span class="input__label">Genere</span>
+
+        <div class="input__radio-wrapper">
+          <label class="input__radio-content">
+            <input type="radio" formControlName="gender" value="all">
+            <span>Tutti</span>
+          </label>
+        </div>
+
+        <div class="input__radio-wrapper">
+          <label class="input__radio-content">
+            <input type="radio" formControlName="gender" value="male">
+            <span>Uomini</span>
+          </label>
+        </div>
+
+        <div class="input__radio-wrapper">
+          <label class="input__radio-content">
+            <input type="radio" formControlName="gender" value="female">
+            <span>Donne</span>
+          </label>
+        </div>
+
+      </div>
+
+      <div class="form__field create-event__call-wrapper">
+        <input class="btn" type="submit" value="invia" [disabled]="form.invalid">
+      </div>
+    </form>
+  </div>
+</div>
+
+
+

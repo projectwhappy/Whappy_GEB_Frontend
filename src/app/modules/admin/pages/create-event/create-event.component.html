@@ -1,0 +1,131 @@
+<app-top-bar [goBack]="true"></app-top-bar>
+<div class="page-wrapper">
+
+  <h1 class="page__title">Crea evento</h1>
+
+  <div>
+    <form [formGroup]="form" (ngSubmit)="submitEvent()">
+
+      <div class="form__field">
+
+        <span class="input__label">Banner</span>
+        <div class="image-preview" [ngStyle]="imageSrc && {'background-image': 'url(' + imageSrc + ')'}">
+          <div class="input-image__call-wrapper">
+            <label>
+              <input #imageInput style="display: none" type="file" accept="image/*" name="image"
+                     formControlName="banner" (change)="onImageChange($event)">
+              <button class="btn" type="button"
+                      (click)="imageInput.click()">{{imageSrc ? "cambia immagine" : "carica immagine"}}</button>
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form__field">
+        <label>
+          <span class="input__label">Titolo</span>
+          <input class="input-text input-text--gray" type="text" name="label" formControlName="label">
+        </label>
+      </div>
+
+      <div class="form__field">
+        <label>
+          <span class="input__label">Descrizione</span>
+          <textarea rows="5" cols="50" class="input-text input-text--gray input-text-area" name="description"
+                    formControlName="description"></textarea>
+        </label>
+      </div>
+
+      <div class="form__field">
+        <label>
+          <span class="input__label">Data e ora</span>
+          <input type="datetime-local" class="input-text input-text--gray" name="date" formControlName="date" (change)="onDateChange($event)">
+        </label>
+      </div>
+
+      <div class="form__field">
+        <span class="input__label">Store</span>
+        <div *ngFor="let store of stores">
+          <label>
+            <input type="radio" [value]='store.storeCode' formControlName="store">
+            <span>{{store.label}}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form__field" formGroupName="address">
+
+
+        <div class="form__field">
+          <label>
+            <span class="input__label">Luogo</span>
+            <input class="input-text input-text--gray" type="text" name="name" formControlName="name">
+          </label>
+        </div>
+
+
+        <div class="form__field form__field__row">
+          <div class="form__field__row__short-item">
+            <label>
+              <span class="input__label">Indirizzo</span>
+              <input class="input-text input-text--gray" type="text" name="address" formControlName="address">
+            </label>
+          </div>
+
+          <div class="form__field__row__short-item">
+            <label>
+              <span class="input__label">Città</span>
+              <input class="input-text input-text--gray" type="text" name="city" formControlName="city">
+            </label>
+          </div>
+        </div>
+
+
+        <div class="form__field form__field__row">
+          <div class="form__field__row__very-short-item">
+            <label>
+              <span class="input__label">Cap</span>
+              <input class="input-text input-text--gray" type="text" name="zipcode" formControlName="zipcode">
+            </label>
+          </div>
+
+          <div class="form__field__row__very-short-item">
+            <label>
+              <span class="input__label">Provincia</span>
+              <input class="input-text input-text--gray" type="text" name="province" formControlName="province">
+            </label>
+          </div>
+
+          <div class="form__field__row__very-short-item">
+            <label>
+              <span class="input__label">Paese</span>
+              <input class="input-text input-text--gray" type="text" name="country" formControlName="country">
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form__field create-event__call-wrapper">
+        <input class="btn" type="submit" value="continua" [disabled]="form.invalid">
+      </div>
+    </form>
+  </div>
+
+
+  <!--
+  <mat-horizontal-stepper>
+    <mat-step>
+      <ng-template matStepLabel>UNO</ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>DUE</ng-template>
+      jdslkf fjdsal jfl jasldfj as
+    </mat-step>
+  </mat-horizontal-stepper>
+-->
+</div>
+
+
+

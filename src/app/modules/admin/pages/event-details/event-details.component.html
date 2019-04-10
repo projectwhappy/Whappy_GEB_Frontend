@@ -1,0 +1,92 @@
+<app-top-bar [goBack]="true"></app-top-bar>
+<div class="page-wrapper">
+  <h1 class="page__title">Dettagli Evento</h1>
+
+  <div class="event-details__preview">
+    <div class="event-details__preview__img-wrapper">
+      <div class="event-details__preview__img" [ngStyle]="{ 'background-image': 'url(' + '' + ')' }">
+      </div>
+    </div>
+    <div class="event-details__preview__info">
+      <h2 class="event-details__preview__info__title">{{ eventWP?.label }}</h2>
+      <p class="event-details__preview__info__description">{{eventWP?.description}}</p>
+
+      <div class="event-details__preview__info__data-wrapper">
+        <div class="event-details__preview__info__data">
+          <svg class="event-details__preview__info__data__icon" xmlns="http://www.w3.org/2000/svg" width="2.4rem"
+               height="2.4rem" viewBox="0 0 24 24">
+            <path fill="none" d="M0 0h24v24H0V0z"/>
+            <path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/>
+          </svg>
+          <p class="event-details__preview__info__data__text">{{ storeInfo?.label }}</p>
+        </div>
+
+        <div class="event-details__preview__info__data">
+          <svg class="event-details__preview__info__data__icon" xmlns="http://www.w3.org/2000/svg" width="2.4rem"
+               height="2.4rem" viewBox="0 0 24 24">
+            <path fill="none" d="M0 0h24v24H0V0z"/>
+            <path
+              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          <p class="event-details__preview__info__data__text">{{ eventWP?.address.name}}</p>
+        </div>
+
+        <div class="event-details__preview__info__data">
+          <svg class="event-details__preview__info__data__icon" xmlns="http://www.w3.org/2000/svg" width="2.4rem"
+               height="2.4rem" viewBox="0 0 24 24">
+            <path fill="none" d="M0 0h24v24H0V0z"/>
+            <path d="M22 3h-3V1h-2v2H7V1H5v2H2v20h20V3zm-2 18H4V8h16v13z"/>
+          </svg>
+          <p class="event-details__preview__info__data__text">{{ eventWP?.date | date: 'short' }}</p>
+        </div>
+      </div>
+
+      <div class="event-details__preview__call">
+        <button class="btn" [routerLink]="['/admin/send-campaign', eventCode ]">Invia di nuovo</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="event-details__content">
+
+    <div class="event-details__content__section">
+      <div class="event-details__content__section__title">
+        Partecipanti
+      </div>
+      <table>
+        <thead>
+        <tr>
+          <th>Nome Cognome</th>
+          <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let participantConfirmed of arrayOfConfirmedPeople">
+          <td>{{participantConfirmed.firstname}} {{participantConfirmed.lastname}}</td>
+          <td>{{ participantConfirmed.mail }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="event-details__content__section">
+      <div class="event-details__content__section__title">
+        Inviti
+      </div>
+      <table>
+        <thead>
+        <tr>
+          <th>Email inviate</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let participant of eventWP?.participants.list">
+          <td>{{ participant.mail }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  </div>
+</div>
