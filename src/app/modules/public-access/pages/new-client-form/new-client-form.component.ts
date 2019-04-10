@@ -18,8 +18,8 @@ export class NewClientFormComponent implements OnInit {
     private dialog: MatDialog,
   ) {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       mail: ['', Validators.required],
       gender: ['', Validators.required],
@@ -52,7 +52,7 @@ export class NewClientFormComponent implements OnInit {
       this.peopleService
         .createNewPeople({
           ...vals,
-          preferredCommunication: 'email',
+          preferredCommunication: 'mail',
           newsletterAcceptance: new Date(),
         })
         .then(() => {

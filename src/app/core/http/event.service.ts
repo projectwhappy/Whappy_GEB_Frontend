@@ -13,11 +13,15 @@ export class EventService {
 
   public createNewEvent(body: StoreEvent) {
     console.log(body);
-    return this.http.post(environment.serverAPI + '/events', body ).toPromise();
+    return this.http.post(environment.serverAPI + '/events', body).toPromise();
   }
 
   public sendEvent(eventCode, body) {
-    return this.http.post(environment.serverAPI + '/events/' + eventCode + '/communication', body ).toPromise();
+    return this.http.post(environment.serverAPI + '/events/' + eventCode + '/communication', body, {
+      headers: {
+        'Content-Type': null
+      }
+    } ).toPromise();
   }
 
   public getAllEvents() {

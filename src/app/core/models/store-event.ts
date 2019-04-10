@@ -2,7 +2,7 @@ import {Participant} from './participant';
 
 export interface StoreEvent {
   code: string;
-  imageUrl?: string;
+  _bannerUrl?: string;
   label: string;
   description: string;
   date: string; // date - time

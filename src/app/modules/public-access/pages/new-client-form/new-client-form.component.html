@@ -30,16 +30,16 @@
         <div class="new-client-form__layout--item-short">
           <label>
             <span class="new-client-form__input-label input__label">First name</span> <br/>
-            <input class="input-text new-client-form__input" type="text" name="name" formControlName="name">
-            <span *ngIf="isControlValid(f.name)">Error</span>
+            <input class="input-text new-client-form__input" type="text" name="firstname" formControlName="firstname">
+            <span *ngIf="isControlValid(f.firstname)">Error</span>
           </label>
         </div>
 
         <div class="new-client-form__layout--item-short">
           <label class="new-client-form__input-label input__label">
             <span>Last name</span> <br/>
-            <input class="input-text new-client-form__input" type="text" name="surname" formControlName="surname">
-            <span *ngIf="isControlValid(f.surname)">Error</span>
+            <input class="input-text new-client-form__input" type="text" name="lastname" formControlName="lastname">
+            <span *ngIf="isControlValid(f.lastname)">Error</span>
           </label>
         </div>
       </div>
