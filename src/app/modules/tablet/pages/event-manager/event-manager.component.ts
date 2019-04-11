@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Participant} from 'src/app/core/models/participant';
-import {StoreStateService} from '../../services/store-state.service';
 import {EventService} from '../../../../core/http/event.service';
 import {EventWithParticipants} from '../../../../core/models/eventWithParticipants';
-import index from '@angular/cli/lib/cli';
 import {MatDialog} from '@angular/material';
 import {EventConfirmDialogComponent} from '../../components/event-confirm-dialog/event-confirm-dialog.component';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {Participant} from '../../../../core/models/participant';
 
 @Component({
   selector: 'app-event-manager',
@@ -14,25 +13,40 @@ import {EventConfirmDialogComponent} from '../../components/event-confirm-dialog
 })
 export class EventManagerComponent implements OnInit {
 
+  public eventCode: string;
   public event: EventWithParticipants;
   public searchText: string;
+  public arrayOfCheckedPeople: Participant[];
+  private event$: any; // better way?
+
 
   constructor(
-    private storeStateService: StoreStateService,
     private eventService: EventService,
     public dialog: MatDialog,
+    private route: ActivatedRoute,
+    private router: Router,
+
   ) {
   }
 
   ngOnInit() {
-    this.refreshData();
+
+    this.eventCode = this.route.snapshot.paramMap.get('eventcode');
+    this.event$ = this.getData();
   }
 
-  public refreshData() {
-    this.eventService
-      .getEventByStoreId(this.storeStateService.getCurrentStoreId())
+  public getData() {
+    this.eventService.getEventByEventCodeWithInvitedPeopleConfirmed(this.eventCode)
       .then((event: EventWithParticipants) => {
+        // Assign event value
         this.event = event;
+
+        // Create an array of checked people
+        this.arrayOfCheckedPeople = this.event.participants.list.filter( (el) => {
+          return el.checked_in;
+        });
+      }, (err) => {
+        console.log(err);
       });
   }
 
@@ -46,7 +60,8 @@ export class EventManagerComponent implements OnInit {
         const participantToReturn = [];
 
         for (const participant of this.event.participants.list) {
-          const nameArray = participant.fullname.split(' ');
+          const fullName = participant.firstname + ' ' + participant.lastname;
+          const nameArray = fullName.split(' ');
           const textToSearch = this.searchText.split(' ');
           let allItemsMatch = true;
           for (const itemSearch of textToSearch) {
@@ -75,12 +90,12 @@ export class EventManagerComponent implements OnInit {
       width: '300px',
       data: {
         participant,
-        eventCode: this.event.event.code,
+        eventCode: this.event.code,
       }
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
-        this.refreshData();
+        this.getData();
       }
     });
   }

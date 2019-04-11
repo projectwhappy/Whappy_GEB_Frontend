@@ -45,23 +45,31 @@
   background: rgba(0, 0, 0, .68);
   padding: 2.4rem;
 
-  .new-client-form__layout--row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  .new-client-form__section {
+    margin-bottom: 4.8rem;
 
-    .new-client-form__layout--item-short {
-      flex: 0 1 calc(50% - 1.2rem);
-      margin-bottom: 2.4rem;
-
-      @media only screen and (max-width: $break_phone) {
-        flex: 0 1 100%;
-      }
+    .new-client-form__section__title {
+      margin-bottom: 1.2rem;
     }
 
-    .new-client-form__layout--item-long {
-      flex: 0 1 100%;
+    .new-client-form__layout--row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
       margin-bottom: 2.4rem;
+
+      .new-client-form__layout--item-short {
+        flex: 0 1 calc(50% - 1.2rem);
+
+        @media only screen and (max-width: $break_phone) {
+          flex: 0 1 100%;
+        }
+      }
+
+      .new-client-form__layout--item-long {
+        flex: 0 1 100%;
+        margin-bottom: 2.4rem;
+      }
     }
   }
 }

@@ -1,13 +1,14 @@
+<app-top-bar [goBack]="true"></app-top-bar>
 <div class="page-wrapper">
   <h1 class="page__title">
     Gestione eventi
   </h1>
   <div class="event-banner">
     <h2 class="event-banner__title">
-      {{ event?.event.label}}
+      {{ event?.label}}
     </h2>
     <p class="event-banner__description">
-     {{event?.event.description}}
+     {{event?.description}}
     </p>
     <div class="event-banner__call-wrapper">
       <button class="btn">
@@ -16,7 +17,7 @@
     </div>
   </div>
   <div class="participant-list-wrapper">
-    <p class="participant-list__info">invitati {{event?.participants.checked_in}} di {{event?.participants.total}}</p>
+    <p class="participant-list__info">invitati {{ arrayOfCheckedPeople?.length }} di {{ event?.participants.list.length}}</p>
 
     <ul class="participant-list">
       <label>

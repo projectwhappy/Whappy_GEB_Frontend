@@ -1,7 +1,14 @@
 export interface Store {
-    id: string;
-    imageUrl?: string;
+  storeCode: string;
+  banner?: string;
+  label: string;
+  description: string;
+  address?: {
     name: string;
     address: string;
-    password?: string;
+    city: string;
+    zipcode: string;
+    province: string;
+    country: string;
+  };
 }

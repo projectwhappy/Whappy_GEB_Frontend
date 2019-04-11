@@ -1,10 +1,9 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {TabletComponent} from './tablet.component';
-import { ChooseStoreComponent } from './pages/choose-store/choose-store.component';
-import { LandingComponent } from './pages/landing/landing.component';
-import {NewClientFormComponent} from './pages/new-client-form/new-client-form.component';
 import {ChooseEventComponent} from './pages/choose-event/choose-event.component';
+import {LogInComponent} from './pages/log-in/log-in.component';
+import {EventManagerComponent} from './pages/event-manager/event-manager.component';
 
 const routes: Routes = [
   {
@@ -13,21 +12,17 @@ const routes: Routes = [
     component: TabletComponent,
     children: [
       {
+        path: '',
+        component: LogInComponent,
+      },
+      {
         path: 'events',
         component: ChooseEventComponent,
       },
       {
-        path: '',
-        component: ChooseStoreComponent,
-      },
-      {
-        path: 'landing',
-        component: LandingComponent,
-      },
-      {
-        path: 'form',
-        component: NewClientFormComponent,
-      },
+        path: 'events/:eventcode',
+        component: EventManagerComponent,
+      }
     ],
   }
 ];

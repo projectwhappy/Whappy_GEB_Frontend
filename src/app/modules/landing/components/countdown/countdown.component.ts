@@ -1,9 +1,8 @@
-import { Component, ElementRef, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { interval } from 'rxjs/internal/observable/interval';
-import { map, flatMap } from 'rxjs/operators';
-// import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-countdown',
@@ -12,9 +11,8 @@ import { map, flatMap } from 'rxjs/operators';
 })
 export class CountdownComponent implements OnInit, OnDestroy {
   @Input() public inputDate: string;
-  @Input() public dateFormat: string = 'yyyy-MM-ddTHH:mm:ss';
+  @Input() public dateFormat = 'yyyy-MM-ddTHH:mm:ss';
   private future: Date;
-  private futureString: string;
   private counter$: Observable<number>;
   private subscription: Subscription;
   private message: string;
@@ -23,7 +21,10 @@ export class CountdownComponent implements OnInit, OnDestroy {
   }
 
   dhms(t) {
-    var days, hours, minutes, seconds;
+    let days: number;
+    let hours: number;
+    let minutes: number;
+    let seconds: number;
     days = Math.floor(t / 86400);
     t -= days * 86400;
     hours = Math.floor(t / 3600) % 24;
@@ -33,10 +34,10 @@ export class CountdownComponent implements OnInit, OnDestroy {
     seconds = t % 60;
 
     return [
-      ((days == 0) ? '' : days + ' days -'),
+      ((days === 0) ? '' : days + ' days -'),
       hours + ' hours -',
-      minutes + ' minutes -',
-      seconds + ' seconds'
+      minutes + ' min -',
+      seconds + ' sec'
     ].join(' ');
   }
 

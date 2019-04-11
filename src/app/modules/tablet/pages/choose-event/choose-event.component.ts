@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StoreEvent} from '../../../../core/models/store-event';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -10,29 +11,32 @@ import {StoreEvent} from '../../../../core/models/store-event';
 export class ChooseEventComponent implements OnInit {
   public storeEvents: StoreEvent[];
 
-  constructor() {
+  constructor(
+    private router: Router,
+  ) {
     // Mock
     this.storeEvents = [{
-      code: 'PRESALEdlfkjsaljlsf',
-      imageUrl: 'https://www.controcampus.it/wp-content/uploads/2017/03/Sfilata-di-moda.jpg',
-      label: 'Pre Sale',
-      description: 'Description jrjtwoeijgpejwt',
-      date: '12 Aprile 2019',
-    },
-      {
-        code: 'POSTSALEdlfkjsaljlsf',
-        imageUrl: 'https://www.controcampus.it/wp-content/uploads/2017/03/Sfilata-di-moda.jpg',
-        label: 'Post Sale',
-        description: 'Description jrjtwoeijgpejwt',
-        date: '18 Aprile 2019',
-      },
-    ];
-  }
+    code: '99155d71-3e36-48df-ac59-7a9343f98c56',
+    imageUrl: 'https://www.controcampus.it/wp-content/uploads/2017/03/Sfilata-di-moda.jpg',
+    label: 'Pre Sale',
+    description: 'Description jrjtwoeijgpejwt',
+    date: '12 Aprile 2019',
+  },
+{
+  code: '99155d71-3e36-48df-ac59-7a9343f98c56',
+  imageUrl: 'https://www.controcampus.it/wp-content/uploads/2017/03/Sfilata-di-moda.jpg',
+  label: 'Post Sale',
+  description: 'Description jrjtwoeijgpejwt',
+  date: '18 Aprile 2019',
+},
+];
+}
 
   ngOnInit() {
   }
   public eventSelected(storeEvent: StoreEvent) {
-    console.log(`Questo è l'evento selezionato ${storeEvent.code}`);
+    // console.log(`Questo è l'evento selezionato ${storeEvent.code}`);
+    this.router.navigate(['tablet/events', storeEvent.code]);
   }
 
 }

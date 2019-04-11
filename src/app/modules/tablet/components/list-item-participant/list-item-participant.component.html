@@ -1,6 +1,6 @@
-<li class="participant-list__item" [class.checked]="participant.checked" (click)="sendIsSelected()">
-    <div class="participant-list__item__img" >{{participant.firstName | slice: 0: 1}}</div>
+<li class="participant-list__item" [class.checked]="participant.checked_in" (click)="sendIsSelected()">
+    <div class="participant-list__item__img" >{{participant.firstname | slice: 0: 1}}</div>
     <p class="participant-list__item__label">
-      {{ participant.fullname }}
+      {{ participant.firstname }} {{participant.lastname}}
     </p>
   </li>
