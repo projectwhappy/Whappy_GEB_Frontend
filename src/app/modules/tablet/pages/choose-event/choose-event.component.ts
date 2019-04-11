@@ -17,14 +17,14 @@ export class ChooseEventComponent implements OnInit {
     // Mock
     this.storeEvents = [{
     code: '99155d71-3e36-48df-ac59-7a9343f98c56',
-    imageUrl: 'https://www.controcampus.it/wp-content/uploads/2017/03/Sfilata-di-moda.jpg',
+      _bannerUrl: 'https://www.controcampus.it/wp-content/uploads/2017/03/Sfilata-di-moda.jpg',
     label: 'Pre Sale',
     description: 'Description jrjtwoeijgpejwt',
     date: '12 Aprile 2019',
   },
 {
   code: '99155d71-3e36-48df-ac59-7a9343f98c56',
-  imageUrl: 'https://www.controcampus.it/wp-content/uploads/2017/03/Sfilata-di-moda.jpg',
+  _bannerUrl: 'https://www.controcampus.it/wp-content/uploads/2017/03/Sfilata-di-moda.jpg',
   label: 'Post Sale',
   description: 'Description jrjtwoeijgpejwt',
   date: '18 Aprile 2019',
