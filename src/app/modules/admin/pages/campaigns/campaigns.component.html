@@ -22,11 +22,11 @@
         </thead>
         <tbody>
         <tr *ngFor="let storeEvent of storeEvents">
-          <td>{{storeEvent.label}}</td>
-          <td>Negozio MOCK</td>
-          <td>{{storeEvent.date | date: 'short'}}</td>
-          <td>Newsletter inviate MOCK</td>
-          <td>N. partecipanti</td>
+          <td>{{ storeEvent.label }}</td>
+          <td>{{ storeEvent._storeName }}</td>
+          <td>{{ storeEvent.date | date: 'short' }}</td>
+          <td>{{ storeEvent._nInvited }}</td>
+          <td>{{ storeEvent._nParticipants }}</td>
           <td>
             <button class="btn" [routerLink]="['events/', storeEvent.code]">Vedi dettagli</button>
           </td>

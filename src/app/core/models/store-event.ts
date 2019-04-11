@@ -1,18 +1,16 @@
 import {Participant} from './participant';
+import {Address} from './address';
 
 export interface StoreEvent {
   code: string;
-  _bannerUrl?: string;
   label: string;
   description: string;
   date: string; // date - time
-  address?: {
-    name: string;
-    address: string; // street and number
-    city: string;
-    zipcode: string;
-    province: string;
-    country: string;
-  };
-  store?: string;
+  store: string;
+  _bannerUrl?: string; // No non c'è
+  address?: Address;
+  _storeName?: string;
+  _nInvited?: number;
+  _nParticipants?: number;
+
 }
