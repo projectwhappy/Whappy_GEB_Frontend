@@ -1,0 +1,40 @@
+<app-top-bar></app-top-bar>
+<div class="page-wrapper">
+
+  <h1 class="page__title">Campagne</h1>
+
+  <div class="campaign-section">
+    <div class="campaign-section__header">
+      <h2 class="campaign-section__header__title">Campagne evento</h2>
+      <button class="btn" routerLink="create-event">Crea evento</button>
+    </div>
+    <div class="campaign-section__content">
+      <table>
+        <thead>
+        <tr>
+          <th>Nome Evento</th>
+          <th>Negozio</th>
+          <th>Data evento</th>
+          <th>Newsletter inviate</th>
+          <th>N. partecipanti</th>
+          <th>Azioni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let storeEvent of storeEvents">
+          <td>{{storeEvent.label}}</td>
+          <td>Negozio MOCK</td>
+          <td>{{storeEvent.date | date: 'short'}}</td>
+          <td>Newsletter inviate MOCK</td>
+          <td>N. partecipanti</td>
+          <td>
+            <button class="btn" [routerLink]="['events/', storeEvent.code]">Vedi dettagli</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</div>
