@@ -3,12 +3,12 @@
   <div class="admin-login-form">
     <h1 class="page__title">Log-in</h1>
 
-    <form  [formGroup]="form" (ngSubmit)="doAction()">
+    <form [formGroup]="form" (ngSubmit)="doAction()">
 
       <div class="login__field">
         <label>
           <span class="input__label">Email</span>
-          <input class="input-text login__input-text" type="email" name="email" formControlName="email">
+          <input class="input-text login__input-text" type="mail" name="mail" formControlName="mail">
         </label>
       </div>
 

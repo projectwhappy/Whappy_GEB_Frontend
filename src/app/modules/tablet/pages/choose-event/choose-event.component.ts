@@ -21,6 +21,7 @@ export class ChooseEventComponent implements OnInit {
     label: 'Pre Sale',
     description: 'Description jrjtwoeijgpejwt',
     date: '12 Aprile 2019',
+    store: '3333-33'
   },
 {
   code: '99155d71-3e36-48df-ac59-7a9343f98c56',
@@ -28,6 +29,7 @@ export class ChooseEventComponent implements OnInit {
   label: 'Post Sale',
   description: 'Description jrjtwoeijgpejwt',
   date: '18 Aprile 2019',
+  store: '3333-33'
 },
 ];
 }

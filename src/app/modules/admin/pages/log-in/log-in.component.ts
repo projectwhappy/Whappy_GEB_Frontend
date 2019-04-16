@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
-import {AdminService} from '../../../../core/http/admin.service';
+import {AuthenticationService} from '../../../../core/http/authentication.service';
+// import {AdminService} from '../../../../core/http/admin.service';
 import {Router} from '@angular/router';
+import { first } from 'rxjs/operators';
 
 
 @Component({
@@ -14,10 +16,10 @@ export class LogInComponent implements OnInit {
   public isLoading = false;
   public loginErrors = false;
 
-  constructor(private fb: FormBuilder, private adminService: AdminService, private router: Router) {
+  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private router: Router) {
     this.form = this.fb.group(
       {
-        email: ['', Validators.required],
+        mail: ['', Validators.required],
         password: ['', Validators.required],
       }
     );
@@ -30,18 +32,15 @@ export class LogInComponent implements OnInit {
     this.isLoading = true;
     this.loginErrors = false;
     const vals = this.form.value;
-    console.log(vals);
-    this.adminService.adminLogin({
-      ...vals
-    }).then(() => {
-        // this.isLoading = false;
-        console.log('login riuscito');
-        // this.router.navigate(['/campaigns']);
-      },
-      (err) => {
-        // this.isLoading = false;
-        this.loginErrors = true;
-        console.log(err);
-      });
+    this.authenticationService.login(vals.mail, vals.password)
+    .pipe(first())
+    .subscribe(
+    data => {
+        this.router.navigate(['/admin/campaigns']);
+    },
+    error => {
+        this.loginErrors = error;
+        this.isLoading = false;
+    });
   }
 }
