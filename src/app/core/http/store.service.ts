@@ -77,7 +77,15 @@ export class StoreService {
 
 
   public getStoreByStoreCode( storeCode: string ) {
-    return this.http.get( environment.serverAPI + /stores/ + storeCode).toPromise();
+    return this.http.get( environment.serverAPI + '/stores/' + storeCode).toPromise();
+  }
+
+  public getStoreCodeByUser( userToken: string ) {
+    let queryParams = '?';
+    if (userToken) {
+      queryParams += 'userToken='+userToken;
+    }
+    return this.http.get( environment.serverAPI + '/stores/info_user_store' + queryParams).toPromise();
   }
 
   /*

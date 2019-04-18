@@ -13,6 +13,7 @@ import {StoreService} from '../../../../core/http/store.service';
 })
 export class EventDetailsComponent implements OnInit {
   public eventCode: string;
+  public eventBanner: string;
   public eventWP: EventWithParticipants;
   public arrayOfConfirmedPeople: Participant[];
   public storeInfo: Store;
@@ -31,7 +32,10 @@ export class EventDetailsComponent implements OnInit {
   ngOnInit() {
     this.eventCode = this.route.snapshot.paramMap.get('eventcode');
     this.eventWP$ = this.eventService.getEventByEventCodeWithInvitedPeopleInvited(this.eventCode)
-      .then((e: EventWithParticipants) => {
+      .then((e:EventWithParticipants) => {
+
+        //Assign event banner
+        this.eventBanner = e._bannerUrl;
 
         // Assign event value
         this.eventWP = e;

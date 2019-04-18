@@ -38,19 +38,21 @@ export class CommunicationService {
       if (hasPrevious) {
         queryParams += '&';
       }
+      hasPrevious = true;
     }
     if (params.toAge) {
       queryParams += 'toAge=' + params.toAge;
       if (hasPrevious) {
         queryParams += '&';
       }
+      hasPrevious = true;
     }
 
     if (params.stores) {
-      queryParams += 'stores=' + params.stores;
+      // queryParams += 'stores=' + params.stores;
 
       params.stores.forEach((item, index) => {
-        queryParams += '&stores[]=' + index;
+        queryParams += '&stores[]=' + item;
       });
     }
 

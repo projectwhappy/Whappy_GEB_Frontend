@@ -14,6 +14,8 @@ import { Router} from '@angular/router';
 export class CreateEventComponent implements OnInit {
   public form;
   public imageSrc;
+  public banner;
+  public bannerContent;
   public formatDate;
   public isLoading;
   public stores: Store[] = [];
@@ -58,12 +60,18 @@ export class CreateEventComponent implements OnInit {
   onImageChange(event: any): void {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
+      this.banner = file;
       const reader = new FileReader();
-      reader.onload = e => {
+      reader.onload = (e) => {
         this.imageSrc = reader.result;
       };
-
       reader.readAsDataURL(file);
+
+      const reader1 = new FileReader();
+      reader1.onload = (e) => {
+        this.bannerContent = reader1.result;
+      };
+      reader1.readAsArrayBuffer(file);
     }
   }
 
@@ -84,13 +92,12 @@ export class CreateEventComponent implements OnInit {
 
   submitEvent() {
     const vals = this.form.value;
-    console.log(vals);
     this.isLoading = true;
     this.parseDate();
     this.eventServices.createNewEvent({
 
       ...vals,
-      // image: this.imageSrc,
+      banner: this.banner,
       date: this.formatDate,
     })
       .then((eventRes: any) => {

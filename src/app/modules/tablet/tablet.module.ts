@@ -13,6 +13,9 @@ import {ListItemParticipantComponent} from './components/list-item-participant/l
 import {TopBarComponent} from './components/top-bar/top-bar.component';
 import {NavComponent} from './components/nav/nav.component';
 import {LogInComponent} from './pages/log-in/log-in.component';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { BrowserModule } from '@angular/platform-browser';
+import { QRScannerComponent } from './pages/qr-scanner/qr-scanner.component';
 
 
 @NgModule({
@@ -29,15 +32,20 @@ import {LogInComponent} from './pages/log-in/log-in.component';
     CardEventComponent,
     TopBarComponent,
     NavComponent,
+    QRScannerComponent
   ],
   imports: [
     SharedModule,
-    TabletRoutingModule
+    TabletRoutingModule,
+    ZXingScannerModule,
+    // BrowserModule,
+    ZXingScannerModule
   ],
   entryComponents: [
     EventConfirmDialogComponent,
     StoreConfirmDialogComponent,
-  ]
+  ],
+  bootstrap: [QRScannerComponent]
 })
 export class TabletModule {
 }

@@ -18,6 +18,7 @@ export class EventManagerComponent implements OnInit {
   public searchText: string;
   public arrayOfCheckedPeople: Participant[];
   private event$: any; // better way?
+  private title: string;
 
 
   constructor(
@@ -30,9 +31,21 @@ export class EventManagerComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.eventCode = this.route.snapshot.paramMap.get('eventcode');
     this.event$ = this.getData();
+    this.route.queryParams.subscribe(params => {
+      if(params['qrCode']) {
+
+        this.eventService.getEventByEventCodeWithInvitedPerson(this.eventCode, null, params['qrCode']).then(
+          (response: any) => {
+            let person: Participant;
+            person = response.participant;
+            this.confirmParticipant(person);
+            // console.log(person);
+            // alert("C'è il QR CODE! "+params['qrCode']);
+        });
+      }
+  });
   }
 
   public getData() {
@@ -86,18 +99,26 @@ export class EventManagerComponent implements OnInit {
   }
 
   public confirmParticipant(participant) {
-    const dialogRef = this.dialog.open(EventConfirmDialogComponent, {
-      width: '300px',
-      data: {
-        participant,
-        eventCode: this.event.code,
-      }
-    });
-    dialogRef.afterClosed().subscribe((res) => {
-      if (res) {
-        this.getData();
-      }
-    });
+    if (!participant.checked_in) {
+      const dialogRef = this.dialog.open(EventConfirmDialogComponent, {
+        width: '300px',
+        data: {
+          participant,
+          eventCode: this.event.code,
+          title: 'TITLE',
+          text: 'TEXT'
+        }
+      });
+      dialogRef.afterClosed().subscribe((res) => {
+        if (res) {
+          this.getData();
+        }
+      });
+    }
+  }
+
+  public scanQRCode() {
+    this.router.navigate(['tablet/events', this.eventCode, 'QRScanner']);
   }
 
 }

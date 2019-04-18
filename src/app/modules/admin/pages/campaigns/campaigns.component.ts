@@ -17,9 +17,9 @@ export class CampaignsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.eventService.getAllEvents().then( (storeEvents: StoreEvent[]) => {
+    this.eventService.getAllEvents(null).then( (storeEvents: StoreEvent[]) => {
       this.storeEvents = storeEvents;
-      });
+    });
   }
 
 }

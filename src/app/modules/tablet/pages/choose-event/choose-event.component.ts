@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {StoreEvent} from '../../../../core/models/store-event';
 import {Router} from '@angular/router';
+import { StoreService } from 'src/app/core/http/store.service';
+import { EventService } from 'src/app/core/http/event.service';
 
 
 @Component({
@@ -13,28 +15,29 @@ export class ChooseEventComponent implements OnInit {
 
   constructor(
     private router: Router,
-  ) {
-    // Mock
-    this.storeEvents = [{
-    code: '99155d71-3e36-48df-ac59-7a9343f98c56',
-      _bannerUrl: 'https://www.controcampus.it/wp-content/uploads/2017/03/Sfilata-di-moda.jpg',
-    label: 'Pre Sale',
-    description: 'Description jrjtwoeijgpejwt',
-    date: '12 Aprile 2019',
-    store: '3333-33'
-  },
-{
-  code: '99155d71-3e36-48df-ac59-7a9343f98c56',
-  _bannerUrl: 'https://www.controcampus.it/wp-content/uploads/2017/03/Sfilata-di-moda.jpg',
-  label: 'Post Sale',
-  description: 'Description jrjtwoeijgpejwt',
-  date: '18 Aprile 2019',
-  store: '3333-33'
-},
-];
-}
+    private storeService: StoreService,
+    private eventService: EventService
+    ) { }
 
   ngOnInit() {
+    // GET USER STORE
+    // estraggo store code sulla base del token salvato in localstorage implementando il service
+    let userToken = JSON.parse(localStorage.getItem('currentUser'));
+
+    this.storeService.getStoreCodeByUser(userToken).then(
+      (_storeCode: string) => {
+
+        this.eventService.getAllEvents(_storeCode).then( (storeEvents: StoreEvent[]) => {
+          this.storeEvents = storeEvents;
+        });
+
+      }
+    );
+
+
+    // GET EVENTS FOR THAT STORE
+    // faccio la chiamata a list event, dopo aver cambiato il service, avendo implementato il parametro opzionale
+    // metto dentro a storeEvents i risultati
   }
   public eventSelected(storeEvent: StoreEvent) {
     // console.log(`Questo è l'evento selezionato ${storeEvent.code}`);

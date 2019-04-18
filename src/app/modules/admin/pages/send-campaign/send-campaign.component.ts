@@ -67,8 +67,8 @@ export class SendCampaignComponent implements OnInit {
     // Subscribe to changes on the selectAll checkbox
     this.form.get('selectAll').valueChanges.subscribe(b => {
       this.form
-        .get('stores')
-        .patchValue(Array(this.stores.length).fill(b), {emitEvent: false});
+      .get('stores')
+      .patchValue(Array(this.stores.length).fill(b), {emitEvent: false});
     });
 
     // Subscribe to changes on the stores checkboxes
@@ -81,7 +81,6 @@ export class SendCampaignComponent implements OnInit {
 
     this.form.valueChanges.subscribe(values => {
       this.target$ = this.getTarget();
-      this.getTarget();
     }, (err) => {
       console.log(err);
     });
@@ -91,14 +90,16 @@ export class SendCampaignComponent implements OnInit {
   public getTarget() {
 
     // Chiedere a luca, le modifiche che faccio alla variabile formValue influiscono anche su form.value
-    /*
-    const selectedStores = this.form.value.stores
+
+    const selectedStores = this.form.getRawValue().stores
       .map((checked, index) => checked ? this.stores[index].storeCode : null)
       .filter(value => value !== null);
 
-    const formValues = this.form.value;
+    let formValues = this.form.getRawValue();
     formValues.stores = selectedStores;
     delete formValues.selectAll; // da vedere, fa problemi
+    console.log(this.form.value.stores);
+    console.log(formValues.stores);
 
     this.communicationService.getTargetedPeopleByEventCode(this.campaignCode, {
       ...formValues,
@@ -107,14 +108,14 @@ export class SendCampaignComponent implements OnInit {
     }, (err) => {
       console.log(err);
     });
-    */
+
   }
 
   public sendCampaign() {
-    const selectedStores = this.form.value.stores
+    const selectedStores = this.form.getRawValue().stores
       .map((checked, index) => checked ? this.stores[index].storeCode : null)
       .filter(value => value !== null);
-    const vals = this.form.value;
+    const vals = this.form.getRawValue();
     vals.stores = selectedStores;
     delete vals.selectAll; // da vedere, fa problemi
 

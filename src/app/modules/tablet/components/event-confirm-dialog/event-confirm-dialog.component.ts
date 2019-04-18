@@ -12,7 +12,6 @@ export class EventConfirmDialogComponent implements OnInit {
   public participant: Participant;
   public eventCode: string;
 
-
   constructor(public dialogRef: MatDialogRef<EventConfirmDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private eventService: EventService,

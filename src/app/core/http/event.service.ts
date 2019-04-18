@@ -12,20 +12,39 @@ export class EventService {
   }
 
   public createNewEvent(body: StoreEvent) {
-    console.log(body);
-    return this.http.post(environment.serverAPI + '/events', body).toPromise();
+    let formData: FormData = new FormData();
+
+    Object.keys(body).forEach(key => { //Conversione oggetto body in formData
+      if (key != 'banner') {
+        if (key == 'address') { //Conversione dell'oggetto address in elementi del formData
+          Object.keys(body[key]).forEach(_key => {
+            formData.append("address[" + _key + "]", body[key][_key]);
+          })
+        } else {
+          formData.append(key, body[key]);
+        }
+      } else { //Cast a blob quando è il file banner
+        formData.append(key, body[key] as Blob);
+      }
+    })
+
+    return this.http.post(environment.serverAPI + '/events', formData).toPromise();
   }
 
   public sendEvent(eventCode, body) {
     return this.http.post(environment.serverAPI + '/events/' + eventCode + '/communication', body, {
       headers: {
-        'Content-Type': null
+        'Content-Type': 'application/json'
       }
     } ).toPromise();
   }
 
-  public getAllEvents() {
-    return this.http.get(environment.serverAPI + '/events').toPromise();
+  public getAllEvents(storeCode:string) {
+    let queryParams = '?';
+    if (storeCode) {
+      queryParams += 'store='+storeCode;
+    }
+    return this.http.get(environment.serverAPI + '/events' + queryParams).toPromise();
   }
 
   // Da controllare
@@ -42,6 +61,26 @@ export class EventService {
     return this.http.get( environment.serverAPI + '/events/' + eventCode + '/invited_people?invitedFilter=confirmed').toPromise();
   }
 
+  // Da controllare
+  public getEventByEventCodeWithInvitedPerson(eventCode, personCode, qrCode) {
+    let queryParams = '?';
+    let hasPrevious = false;
+
+    if (personCode) {
+      queryParams += 'personCode=' + personCode;
+      hasPrevious = true;
+      queryParams += '&';
+    }
+    if (qrCode) {
+      queryParams += 'qrCode=' + qrCode;
+      if (hasPrevious) {
+        queryParams += '&';
+      }
+      hasPrevious = true;
+    }
+
+    return this.http.get( environment.serverAPI + '/events/' + eventCode + '/invited_person' + queryParams).toPromise();
+  }
 
 
   public checkInPerson(eventCode: string, personCode: string) {

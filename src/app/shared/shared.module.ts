@@ -7,7 +7,9 @@ import {RouterModule} from '@angular/router';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
-  declarations: [ConfirmDialogComponent],
+  declarations: [
+    ConfirmDialogComponent,
+  ],
   imports: [
     CommonModule,
     MatDialogModule,
