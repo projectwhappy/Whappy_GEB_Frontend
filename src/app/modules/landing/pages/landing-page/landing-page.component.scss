@@ -40,12 +40,15 @@
 
 // Event booking confirmed component
 .event-booking__container {
-  background-color: $gray_light;
+  background-color: white;
+  box-shadow: $elevation-2;
   display: flex;
   margin: 4.8rem 0;
+  align-items: center;
+  padding: 1.2rem;
 
   .event-booking__info-container {
-    padding: 1.2rem;
+    padding-right: 1.2rem;
     flex: 1;
 
     .event-booking__info-container__title {
@@ -65,7 +68,9 @@
   }
 
   .event-booking__qr-container {
-    width: 16rem;
+    width: 12rem;
+
+
 
     .event-booking--qr {
       padding-bottom: 100%;
