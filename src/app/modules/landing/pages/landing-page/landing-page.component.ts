@@ -10,6 +10,7 @@ import { EventService } from 'src/app/core/http/event.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { QRViewerDialogComponent } from '../../components/qr-viewer-dialog/qr-viewer-dialog.component';
+import * as moment from 'moment';
 
 
 export interface InviteCodes {
@@ -89,6 +90,17 @@ export class LandingPageComponent implements OnInit {
           qrCodeImage: this.invitationQRImage
         }
       });
+    }
+  }
+
+  public isEventTerminated() {
+    var date = moment(this.eventWithParticipant.date);
+    var now = moment();
+
+    if (now < date) {
+      return true;
+    } else {
+      return false;
     }
   }
 

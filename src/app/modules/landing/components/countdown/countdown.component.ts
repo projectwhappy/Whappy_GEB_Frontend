@@ -42,6 +42,7 @@ export class CountdownComponent implements OnInit, OnDestroy {
   }
 
 
+
   ngOnInit() {
     this.future = new Date(this.inputDate);
 
