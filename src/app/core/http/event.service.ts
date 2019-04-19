@@ -14,16 +14,16 @@ export class EventService {
   public createNewEvent(body: StoreEvent) {
     let formData: FormData = new FormData();
 
-    Object.keys(body).forEach(key => { //Conversione oggetto body in formData
+    Object.keys(body).forEach(key => { // Conversione oggetto body in formData
       if (key != 'banner') {
-        if (key == 'address') { //Conversione dell'oggetto address in elementi del formData
+        if (key == 'address') { // Conversione dell'oggetto address in elementi del formData
           Object.keys(body[key]).forEach(_key => {
-            formData.append("address[" + _key + "]", body[key][_key]);
-          })
+            formData.append('address[' + _key + ']', body[key][_key]);
+          });
         } else {
           formData.append(key, body[key]);
         }
-      } else { //Cast a blob quando è il file banner
+      } else { // Cast a blob quando è il file banner
         formData.append(key, body[key] as Blob);
       }
     })
@@ -39,10 +39,10 @@ export class EventService {
     } ).toPromise();
   }
 
-  public getAllEvents(storeCode:string) {
+  public getAllEvents(storeCode: string) {
     let queryParams = '?';
     if (storeCode) {
-      queryParams += 'store='+storeCode;
+      queryParams += 'store=' + storeCode;
     }
     return this.http.get(environment.serverAPI + '/events' + queryParams).toPromise();
   }

@@ -1,16 +1,31 @@
 @import "~src/styles/common";
 
+.nav-close__layer {
+  background-color: $transparent_hover;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1900;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
+
 .nav {
   background-color: $primary_color_solid;
   position: fixed;
   z-index: 2000;
   height: 100%;
-  min-width: 28rem;
+  min-width: 32rem;
   padding: 2.4rem;
   color: white;
   transform: translateX(-100%);
   transition: transform 250ms;
   transition-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
 
 
   &.visible {
@@ -25,6 +40,7 @@
     background-color: transparent;
     border: none;
     padding: 0;
+    margin-bottom: 2.4rem;
 
     cursor: pointer;
 
@@ -44,6 +60,16 @@
     }
   }
 
+  .nav__hr {
+    width: calc(100% + 4.8rem);
+    margin-right: -2.4rem;
+    margin-left: -2.4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+  }
+
+  .main-list {
+    flex: 1;
+  }
   .nav__list {
     padding: 3.2rem 1.2rem 3.2rem 1.2rem;
 
