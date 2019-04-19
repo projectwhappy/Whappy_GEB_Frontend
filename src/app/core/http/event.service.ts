@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {EventWithParticipants} from '../models/eventWithParticipants';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {StoreEvent} from '../models/store-event';
@@ -85,6 +84,36 @@ export class EventService {
 
   public checkInPerson(eventCode: string, personCode: string) {
     return this.http.post(environment.serverAPI + '/events/' + eventCode + '/check_in_by_person', {
+      personCode,
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).toPromise();
+  }
+
+  public getInvitationByToken(inviteToken: string) {
+    let queryParams = '?';
+
+    if (inviteToken) {
+      queryParams += 'inviteToken=' + inviteToken;
+    }
+
+    return this.http.get( environment.serverAPI + '/events/retrieve_invitation_by_token' + queryParams).toPromise();
+  }
+
+  public getInvitationQRCode(eventCode: string, personCode: string) {
+    let queryParams = '?';
+
+    if (personCode) {
+      queryParams += 'personCode=' + personCode;
+    }
+
+    return this.http.get( environment.serverAPI + '/events/' + eventCode + '/retrieve_qr_by_person' + queryParams).toPromise();
+  }
+
+  public confirmEventParticipation(eventCode: string, personCode: string) {
+    return this.http.post(environment.serverAPI + '/events/' + eventCode + '/confirm_participation', {
       personCode,
     }, {
       headers: {

@@ -3,7 +3,7 @@ import {StoreEvent} from './store-event';
 
 export interface EventWithParticipants extends StoreEvent {
     _bannerUrl?: string;
-    participants: {
+    participants?: {
         list: Participant[];
     };
 }

@@ -2,8 +2,8 @@ export interface Participant {
   code: string;
   firstname: string;
   lastname: string;
-  confirmed: boolean;
-  checked_in: boolean;
+  confirmed: string;
+  checked_in: string;
   qrcode: string;
   mail: string;
 }

@@ -1,0 +1,9 @@
+<h1 class="modal__title event-confirm__title" mat-dialog-title>Your invitation QR Code</h1>
+<div mat-dialog-content>
+    <div class="event-booking--qr"
+      [ngStyle]="{ 'background-image': 'url(data:image/png;base64,'+qrCodeImage+')' }">
+  </div>
+</div>
+<div class="modal__call-wrapper event-confirm__call-wrapper" mat-dialog-actions>
+  <button class="btn modal__main-call event-confirm__main-call" mat-button (click)="dialogRef.close()">Close QR Codeviewer</button>
+</div>
