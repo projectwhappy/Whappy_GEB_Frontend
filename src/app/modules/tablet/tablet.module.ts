@@ -39,7 +39,6 @@ import { QRScannerComponent } from './pages/qr-scanner/qr-scanner.component';
     TabletRoutingModule,
     ZXingScannerModule,
     // BrowserModule,
-    ZXingScannerModule
   ],
   entryComponents: [
     EventConfirmDialogComponent,

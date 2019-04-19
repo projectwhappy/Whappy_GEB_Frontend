@@ -8,6 +8,7 @@ export interface StoreEvent {
   date: string; // date - time
   store: string;
   banner?: File; // No non c'è
+  _bannerUrl?: string;
   address?: Address;
   _storeName?: string;
   _nInvited?: number;

@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {EventService} from '../../../../core/http/event.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {EventWithParticipants} from '../../../../core/models/eventWithParticipants';
 import {Store} from '../../../../core/models/store';
 import {Participant} from '../../../../core/models/participant';
 import {StoreService} from '../../../../core/http/store.service';
+import { EventWithParticipants } from 'src/app/core/models/eventWithParticipants';
 
 @Component({
   selector: 'app-event-details',

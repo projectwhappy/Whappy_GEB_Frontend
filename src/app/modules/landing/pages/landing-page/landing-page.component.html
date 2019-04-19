@@ -1,24 +1,24 @@
 <div class="event__head">
   <div class="event__head__membership-text">
-    <p class="membership-text__name">{{campaign.membership}}</p>
-    <p class="membership-text__store">{{campaign.store_name}}</p>
+    <p class="membership-text__name">GB Membership Club</p>
+    <p class="membership-text__store">{{eventWithParticipant._storeName}}</p>
   </div>
   <div class="event__img-wrapper">
-    <div class="event__img" [ngStyle]="{ 'background-image': 'url(' + campaign.event_imgUrl + ')' }"></div>
+    <div class="event__img" [ngStyle]="{ 'background-image': 'url(' + eventWithParticipant._bannerUrl + ')' }"></div>
   </div>
 </div>
 
 <div class="page-wrapper">
   <div class="event__body">
-    <h1 class="event__body__title page__title">{{ campaign.campaign_title | translate }}</h1>
-    <p class="event__body__description">{{campaign.campaign_description}}</p>
+    <h1 class="event__body__title page__title">{{ eventWithParticipant.label | translate }}</h1>
+    <p class="event__body__description">{{eventWithParticipant.description}}</p>
   </div>
 
 
   <!-- Time countdown container -->
-  <div class="countdown-container" *ngIf="campaign.campaign_elements.indexOf('time_countdown_container') > -1">
+  <div class="countdown-container">
     <p class="countdown-container__title" >Inizia tra</p>
-    <app-countdown class="countdown-container__text" [inputDate]="reservationInfo.start_date">Loading...
+    <app-countdown class="countdown-container__text" [inputDate]="eventWithParticipant.date">Loading...
     </app-countdown>
   </div>
 
@@ -71,7 +71,7 @@
   -->
 
   <!-- Reserve Container -->
-  <div class="event--promotion__container" *ngIf="campaign.campaign_elements.indexOf('reserve_container') > -1">
+  <div class="event--promotion__container" *ngIf="!eventWithParticipant.participant.confirmed">
     <div class="event--promotion__container__infos">
       <div class="event--promotion__container__title">
         <div>
@@ -80,7 +80,7 @@
       </div>
       <div class="event--promotion__container__info">
         <div>
-          <button class="button--submit" type="submit">Conferma</button>
+          <button class="button--submit" type="submit" (click)="confirmParticipation()">Conferma</button>
         </div>
       </div>
     </div>
@@ -110,7 +110,7 @@
  -->
 
   <!-- Reservation container -->
-  <div class="event-booking__container" *ngIf="campaign.campaign_elements.indexOf('reservation_container') > -1">
+  <div class="event-booking__container" *ngIf="eventWithParticipant.participant.confirmed">
 
     <div class="event-booking__info-container">
       <p class="event-booking__info-container__title">Prenotazione</p>
@@ -122,7 +122,7 @@
           <path d="M22 3h-3V1h-2v2H7V1H5v2H2v20h20V3zm-2 18H4V8h16v13z"/>
         </svg>
         <p>
-          {{reservationInfo.start_date | date:'dd-MM-yyyy'}}
+          {{eventWithParticipant.date | date:'dd-MM-yyyy'}}
         </p>
       </div>
 
@@ -134,14 +134,14 @@
             d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
         </svg>
         <p>
-          {{reservationInfo.start_date | date:'HH:mm'}}
+          {{eventWithParticipant.date  | date:'HH:mm'}}
         </p>
       </div>
     </div>
 
     <div class="event-booking__qr-container">
-      <div class="event-booking--qr"
-           [ngStyle]="{ 'background-image': 'url(https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/220px-QR_code_for_mobile_English_Wikipedia.svg.png)' }">
+      <div class="event-booking--qr" (click)="openQRViewer()"
+        [ngStyle]="{ 'background-image': 'url(data:image/png;base64,'+invitationQRImage+')' }">
       </div>
     </div>
   </div>

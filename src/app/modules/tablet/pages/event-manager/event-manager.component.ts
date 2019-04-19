@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {EventService} from '../../../../core/http/event.service';
-import {EventWithParticipants} from '../../../../core/models/eventWithParticipants';
 import {MatDialog} from '@angular/material';
 import {EventConfirmDialogComponent} from '../../components/event-confirm-dialog/event-confirm-dialog.component';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Participant} from '../../../../core/models/participant';
+import { EventWithParticipants } from 'src/app/core/models/eventWithParticipants';
 
 @Component({
   selector: 'app-event-manager',
