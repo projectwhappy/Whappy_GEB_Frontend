@@ -4,6 +4,7 @@ import {Store} from 'src/app/core/models/store';
 import {StoreService} from '../../../../core/http/store.service';
 import {EventService} from '../../../../core/http/event.service';
 import { Router} from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-create-event',
@@ -80,7 +81,6 @@ export class CreateEventComponent implements OnInit {
   }
 
   parseDate(): void {
-    console.log(this.formatDate);
     let year: number = this.formatDate.getFullYear();
     let month: number = this.formatDate.getMonth();
     let day: number = this.formatDate.getDay();
@@ -91,11 +91,12 @@ export class CreateEventComponent implements OnInit {
   }
 
   submitEvent() {
-    const vals = this.form.value;
+    const vals = this.form.getRawValue();
     this.isLoading = true;
-    this.parseDate();
+    if(moment(this.formatDate, 'MM/DD/YYYY HH:MM:SS',true).isValid()){
+      this.parseDate();
+    }
     this.eventServices.createNewEvent({
-
       ...vals,
       banner: this.banner,
       date: this.formatDate,
@@ -107,6 +108,7 @@ export class CreateEventComponent implements OnInit {
       this.isLoading = false;
       console.log(err);
     });
+
   }
 }
 

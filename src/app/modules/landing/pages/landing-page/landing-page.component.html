@@ -16,8 +16,8 @@
 
 
   <!-- Time countdown container -->
-  <div class="countdown-container">
-    <p class="countdown-container__title" >Inizia tra</p>
+  <div class="countdown-container" *ngIf="isEventTerminated()">
+    <p class="countdown-container__title">Inizia tra</p>
     <app-countdown class="countdown-container__text" [inputDate]="eventWithParticipant.date">Loading...
     </app-countdown>
   </div>
