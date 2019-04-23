@@ -18,7 +18,7 @@
   <!-- Time countdown container -->
   <div class="countdown-container" *ngIf="isEventTerminated()">
     <p class="countdown-container__title">Inizia tra</p>
-    <app-countdown class="countdown-container__text" [inputDate]="eventWithParticipant.date">Loading...
+    <app-countdown class="countdown-container__text" [inputDate]="eventWithParticipant?.date">Loading...
     </app-countdown>
   </div>
 
@@ -70,37 +70,6 @@
   </div>
   -->
 
-  <!-- Reserve Container -->
-  <div class="event-booking__container" *ngIf="!eventWithParticipant?.participant.confirmed">
-    <div class="event-booking__info-container">
-          <p class="event-booking__info-container__title">Riserva</p>
-      <div class="event-booking__info-container__data-container">
-        <svg class="event-booking__info-container__data__icon" xmlns="http://www.w3.org/2000/svg" width="2.4rem"
-             height="2.4rem" viewBox="0 0 24 24">
-          <path fill="none" d="M0 0h24v24H0V0z"/>
-          <path d="M22 3h-3V1h-2v2H7V1H5v2H2v20h20V3zm-2 18H4V8h16v13z"/>
-        </svg>
-        <p>
-          {{eventWithParticipant?.date | date:'dd-MM-yyyy'}}
-        </p>
-      </div>
-
-      <div class="event-booking__info-container__data-container">
-        <svg class="event-booking__info-container__data__icon" xmlns="http://www.w3.org/2000/svg" width="2.4rem"
-             height="2.4rem" viewBox="0 0 24 24">
-          <path fill="none" d="M0 0h24v24H0V0z"/>
-          <path
-            d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-        </svg>
-        <p>
-          {{eventWithParticipant?.date  | date:'HH:mm'}}
-        </p>
-      </div>
-        <div>
-          <button class="button--submit" type="submit" (click)="confirmParticipation()">Conferma</button>
-        </div>
-      </div>
-  </div>
 
   <!-- Invite Container
   <div class="event--promotion__container" *ngIf="campaign.campaign_elements.indexOf('invite_person_container') > -1">
@@ -126,40 +95,72 @@
  -->
 
   <!-- Reservation container -->
-  <div class="event-booking__container" *ngIf="eventWithParticipant?.participant.confirmed">
+  <div class="event-booking__container">
 
-    <div class="event-booking__info-container">
-      <p class="event-booking__info-container__title">Prenotazione</p>
 
-      <div class="event-booking__info-container__data-container">
-        <svg class="event-booking__info-container__data__icon" xmlns="http://www.w3.org/2000/svg" width="2.4rem"
-             height="2.4rem" viewBox="0 0 24 24">
-          <path fill="none" d="M0 0h24v24H0V0z"/>
-          <path d="M22 3h-3V1h-2v2H7V1H5v2H2v20h20V3zm-2 18H4V8h16v13z"/>
-        </svg>
-        <p>
-          {{eventWithParticipant?.date | date:'dd-MM-yyyy'}}
+    <ng-container *ngIf="!isEventTerminated() && !eventWithParticipant?.participant.confirmed">
+      <p class="event-booking__message">
+        Prenotazioni terminate
+      </p>
+    </ng-container>
+
+    <ng-container *ngIf="isEventTerminated()  || eventWithParticipant?.participant.confirmed">
+      <div class="event-booking__info-container">
+
+
+        <p class="event-booking__info-container__title">
+
+          <ng-container *ngIf="eventWithParticipant?.participant.confirmed">
+            Prenotazione
+          </ng-container>
+
+          <ng-container *ngIf="!eventWithParticipant?.participant.confirmed">
+            Riserva
+          </ng-container>
+
+
         </p>
+
+        <div class="event-booking__info-container__data-container">
+          <svg class="event-booking__info-container__data__icon" xmlns="http://www.w3.org/2000/svg" width="2.4rem"
+               height="2.4rem" viewBox="0 0 24 24">
+            <path fill="none" d="M0 0h24v24H0V0z"/>
+            <path d="M22 3h-3V1h-2v2H7V1H5v2H2v20h20V3zm-2 18H4V8h16v13z"/>
+          </svg>
+          <p>
+            {{eventWithParticipant?.date | date:'dd-MM-yyyy'}}
+          </p>
+        </div>
+
+        <div class="event-booking__info-container__data-container">
+          <svg class="event-booking__info-container__data__icon" xmlns="http://www.w3.org/2000/svg" width="2.4rem"
+               height="2.4rem" viewBox="0 0 24 24">
+            <path fill="none" d="M0 0h24v24H0V0z"/>
+            <path
+              d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+          </svg>
+          <p>
+            {{eventWithParticipant?.date | date:'HH:mm'}}
+          </p>
+        </div>
       </div>
 
-      <div class="event-booking__info-container__data-container">
-        <svg class="event-booking__info-container__data__icon" xmlns="http://www.w3.org/2000/svg" width="2.4rem"
-             height="2.4rem" viewBox="0 0 24 24">
-          <path fill="none" d="M0 0h24v24H0V0z"/>
-          <path
-            d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-        </svg>
-        <p>
-          {{eventWithParticipant?.date  | date:'HH:mm'}}
-        </p>
-      </div>
-    </div>
 
-    <div class="event-booking__qr-container">
-      <div class="event-booking--qr"  *ngIf="invitationQRImage" (click)="openQRViewer()"
-        [ngStyle]="{ 'background-image': 'url(data:image/png;base64,'+ invitationQRImage +')' }">
-      </div>
-    </div>
+      <ng-container *ngIf="eventWithParticipant?.participant.confirmed">
+        <div class="event-booking__qr-container">
+          <div class="event-booking--qr" *ngIf="invitationQRImage" (click)="openQRViewer()"
+               [ngStyle]="{ 'background-image': 'url(data:image/png;base64,'+ invitationQRImage +')' }">
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="!eventWithParticipant?.participant.confirmed">
+        <div class="event-booking__call-container">
+          <button class="button--submit btn" type="submit" (click)="confirmParticipation()">Conferma</button>
+        </div>
+      </ng-container>
+    </ng-container>
+
   </div>
 
   <!-- Invited people container

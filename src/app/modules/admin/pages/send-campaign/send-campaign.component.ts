@@ -5,7 +5,6 @@ import {StoreService} from '../../../../core/http/store.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EventService} from '../../../../core/http/event.service';
 import {CommunicationService, TotalTargets} from '../../../../core/http/communication.service';
-import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-send-campaign',
@@ -26,7 +25,6 @@ export class SendCampaignComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private communicationService: CommunicationService,
-              private http: HttpClient,
   ) {
 
     // Create a FormControl for the select/unselect all checkbox
