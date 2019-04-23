@@ -1,6 +1,6 @@
-<h1 class="modal__title event-confirm__title" mat-dialog-title>{{title}}</h1>
+<h1 class="modal__title event-confirm__title" mat-dialog-title>{{data.title}}</h1>
 <div mat-dialog-content>
-  <p class="modal__text event-confirm__text" >{{text}}</p>
+  <p class="modal__text event-confirm__text" >{{data.text}}</p>
 </div>
 <div class="modal__call-wrapper event-confirm__call-wrapper" mat-dialog-actions>
   <button class="btn modal__main-call event-confirm__main-call" mat-button (click)="confirm()" >Ok</button>

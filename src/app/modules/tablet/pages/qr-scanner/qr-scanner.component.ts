@@ -40,14 +40,18 @@ export class QRScannerComponent implements OnInit {
       this.hasDevices = true;
       this.availableDevices = devices;
 
-      // selects the devices's back camera by default
-      // for (const device of devices) {
-      //     if (/back|rear|environment/gi.test(device.label)) {
-      //         this.scanner.changeDevice(device);
-      //         this.currentDevice = device;
-      //         break;
-      //     }
-      // }
+      //selects the devices's back camera by default
+      for (const device of devices) {
+        if (/back|rear|environment/gi.test(device.label)) {
+          this.scanner.changeDevice(device);
+          this.currentDevice = device;
+          break;
+        }
+      }
+
+      if (!this.currentDevice && devices[0]) {
+        this.currentDevice = devices[0];
+      }
     });
 
     this.scanner.camerasNotFound.subscribe(() => this.hasDevices = false);

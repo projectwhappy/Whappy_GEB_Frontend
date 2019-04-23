@@ -15,6 +15,8 @@ export class ConfirmDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
+    this.title = data.title;
+    this.text = data.text;
     setTimeout(() => {
       this.confirm();
     }, 10000);

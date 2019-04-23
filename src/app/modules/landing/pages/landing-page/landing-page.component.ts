@@ -4,13 +4,13 @@ import {ReservationInfo} from '../../../../core/models/reservationInfo';
 import {InvitedInfo} from '../../../../core/models/invitedInfo';
 import {Campaign} from '../../../../core/models/campaign';
 import {Person} from '../../../../core/models/Person';
-import { EventWithParticipant } from 'src/app/core/models/eventWithParticipant';
-import { Participant } from 'src/app/core/models/participant';
-import { EventService } from 'src/app/core/http/event.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { QRViewerDialogComponent } from '../../components/qr-viewer-dialog/qr-viewer-dialog.component';
 import * as moment from 'moment';
+import { EventWithParticipant } from 'src/app/core/models/eventWithParticipant';
+import { Participant } from 'src/app/core/models/participant';
+import { EventService } from 'src/app/core/http/event.service';
 
 
 export interface InviteCodes {
@@ -103,5 +103,6 @@ export class LandingPageComponent implements OnInit {
       return false;
     }
   }
+
 
 }

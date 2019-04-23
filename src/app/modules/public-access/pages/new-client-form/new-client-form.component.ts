@@ -46,7 +46,7 @@ export class NewClientFormComponent implements OnInit {
 
 
   public doAction() {
-    const vals = this.form.value;
+    const vals = this.form.getRawValue();
     console.log(vals);
     if (this.form.valid) {
       this.peopleService
@@ -58,7 +58,7 @@ export class NewClientFormComponent implements OnInit {
         .then(() => {
           const dialogConfirm = this.dialog.open(ConfirmDialogComponent, {
             width: '30rem',
-            data: {title: 'Benvenuto', text: 'Iscrizione completata.'}
+            data: {title: 'Benvenuto ' + vals.firstname, text: 'Iscrizione completata.'}
           });
 
           dialogConfirm.afterClosed().subscribe(() => {

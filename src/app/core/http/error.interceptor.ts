@@ -4,10 +4,14 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { AuthenticationService } from './authentication.service';
+import { AlertService } from 'ngx-alerts';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-    constructor(private authenticationService: AuthenticationService) {}
+    constructor(
+        private authenticationService: AuthenticationService,
+        private alertService: AlertService
+        ) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -35,6 +39,8 @@ export class ErrorInterceptor implements HttpInterceptor {
                 if (err.status === 0) {
                     console.log("May be CORS error");
                 }
+
+                this.alertService.danger("Status: " + err.status + "\nError: " + err.error.message);
 
                 const error = err.error.message || err.statusText;
                 return throwError(error);
