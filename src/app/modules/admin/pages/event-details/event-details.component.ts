@@ -13,7 +13,6 @@ import { EventWithParticipants } from 'src/app/core/models/eventWithParticipants
 })
 export class EventDetailsComponent implements OnInit {
   public eventCode: string;
-  public eventBanner: string;
   public eventWP: EventWithParticipants;
   public arrayOfConfirmedPeople: Participant[];
   public storeInfo: Store;
@@ -34,11 +33,10 @@ export class EventDetailsComponent implements OnInit {
     this.eventWP$ = this.eventService.getEventByEventCodeWithInvitedPeopleInvited(this.eventCode)
       .then((e:EventWithParticipants) => {
 
-        //Assign event banner
-        this.eventBanner = e._bannerUrl;
-
+      
         // Assign event value
         this.eventWP = e;
+        console.log(e);
 
         // Create an array of confirmed people
         this.arrayOfConfirmedPeople = this.eventWP.participants.list.filter((el) => {

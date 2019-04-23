@@ -94,8 +94,8 @@ export class LandingPageComponent implements OnInit {
   }
 
   public isEventTerminated() {
-    var date = moment(this.eventWithParticipant.date);
-    var now = moment();
+    const date = moment(this.eventWithParticipant.date);
+    const now = moment();
 
     if (now < date) {
       return true;

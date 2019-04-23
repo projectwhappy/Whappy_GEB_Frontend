@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {AuthenticationService} from '../../../../core/http/authentication.service';
 
 @Component({
   selector: 'app-nav',
@@ -9,13 +10,20 @@ export class NavComponent implements OnInit {
 
   @Input() public isNavOpen;
   @Output() public closeNav = new EventEmitter();
-  constructor() { }
+
+  constructor(private authenticationService: AuthenticationService) {
+  }
 
   ngOnInit() {
   }
 
   public sendCloseNav() {
     this.closeNav.emit();
+  }
+
+  public logOut() {
+    this.authenticationService.logout();
+    location.reload(true);
   }
 
 }
