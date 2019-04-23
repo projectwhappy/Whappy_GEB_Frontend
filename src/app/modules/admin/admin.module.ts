@@ -11,6 +11,8 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { CreateEventComponent } from './pages/create-event/create-event.component';
 import { SendCampaignComponent } from './pages/send-campaign/send-campaign.component';
 import { EventDetailsComponent } from './pages/event-details/event-details.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,9 @@ import { EventDetailsComponent } from './pages/event-details/event-details.compo
     SharedModule,
     CommonModule,
     AdminRoutingModule,
+    // BrowserAnimationsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ]
 })
 export class AdminModule {

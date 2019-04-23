@@ -76,30 +76,33 @@ export class CreateEventComponent implements OnInit {
     }
   }
 
-  onDateChange(event: any): void {
-    this.formatDate = new Date(event.target.value);
-  }
+  public parseDate(date: Date): string {
+    console.log(date);
+    let year: number = date.getFullYear();
+    let month: number = date.getMonth()+1;
+    let day: number = date.getDate();
+    let hours: number = date.getHours();
+    let minutes: number = date.getMinutes();
 
-  parseDate(): void {
-    let year: number = this.formatDate.getFullYear();
-    let month: number = this.formatDate.getMonth();
-    let day: number = this.formatDate.getDay();
-    let hours: number = this.formatDate.getHours();
-    let minutes: number = this.formatDate.getMinutes();
-
-    this.formatDate = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + '00';
+    return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + '00';
+    // console.log(this.formatDate);
   }
 
   submitEvent() {
     const vals = this.form.getRawValue();
     this.isLoading = true;
-    if(moment(this.formatDate, 'MM/DD/YYYY HH:MM:SS',true).isValid()){
-      this.parseDate();
-    }
+    // if(moment(this.formatDate, 'MM/DD/YYYY HH:MM:SS',true).isValid()){
+    // let stringDateToParse = moment(vals.date).format("MM-DD-YYYY HH:MM:SS").toString();
+    // console.log(stringDateToParse);
+    // let dateToParse = new Date(stringDateToParse);
+    // console.log(dateToParse);
+    let parsedDate = this.parseDate(vals.date);
+    console.log(parsedDate);
+    // }
     this.eventServices.createNewEvent({
       ...vals,
       banner: this.banner,
-      date: this.formatDate,
+      date: parsedDate,
     })
       .then((eventRes: any) => {
       this.isLoading = false;

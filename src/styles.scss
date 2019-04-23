@@ -10,8 +10,20 @@
 @import "styles/modal";
 
 // External library
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 
 
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.cdk-overlay-container .cdk-overlay-connected-position-bounding-box .cdk-overlay-pane .owl-dt-container {
+    transform: scale(2.5,2.5) !important;
+    -webkit-transform: scale(2.5,2.5) !important;
+    -moz-transform: scale(2.5,2.5) !important;
+    -o-transform: scale(2.5,2.5) !important;
+    -ms-transform: scale(2.5,2.5) !important;
+}
+// .cdk-overlay-container .cdk-overlay-connected-position-bounding-box .cdk-overlay-pane{
+//     // top:0px;
+// }
