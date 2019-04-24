@@ -62,7 +62,6 @@ export class CreateEventComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
       this.banner = file;
-      this.banner.name = encodeURI(this.banner.name);
       const reader = new FileReader();
       reader.onload = (e) => {
         this.imageSrc = reader.result;

@@ -29,19 +29,22 @@
   }
 
   &.btn-loading {
-    animation: btn-loading-pulse 1s infinite;
+    animation: btn-loading-pulse 1.2s infinite;
 
   }
 
   @keyframes btn-loading-pulse {
     0% {
       background-color: $primary_color_solid;
+      border: 1px solid $primary_color_solid;
     }
     70% {
-      background-color: $primary_color_solid_hover;
+      background-color: #aaaaaa;
+      border: 1px solid #aaaaaa;
     }
     100% {
       background-color: $primary_color_solid;
+      border: 1px solid $primary_color_solid;
     }
   }
 
