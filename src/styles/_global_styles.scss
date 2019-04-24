@@ -18,7 +18,8 @@
   
     line-height: 145%;
     font-weight: 400;
-  
+
+    color: $text-primary;
     font-variant: tabular-nums;
     -moz-font-feature-settings: "tnum";
     -webkit-font-feature-settings: "tnum";
@@ -70,4 +71,3 @@
       font-size: 75%;
     }
   }
-  

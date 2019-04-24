@@ -10,14 +10,20 @@ $break_tab_land: 75em;
 $break_desk_big: 112.5em;
 
 
+
 // Palette
 $primary_color_solid: black;
-$primary_color_solid_hover: rgb(15,15,15);
-$primary_color_solid_active: rgb(30,30,30);
+$primary_color_solid_hover: rgb(36,36,36);
+$primary_color_solid_active: rgb(48,48,48);
 
 $secondary_color_solid: #EBCB80;
 $secondary_color_solid_hover: rgb(215, 187, 122);
 $secondary_color_solid_active: rgb(196,171,112);
+
+
+// Text
+$text-primary: rgba(0,0,0, .98);
+$text-secondary: rgba(0,0,0, .72);
 
 
 $gray_light: #EEEEEE;

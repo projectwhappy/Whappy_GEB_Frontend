@@ -1,13 +1,23 @@
-<div class="scanner-shell" [hidden]="!hasDevices">
+<app-top-bar [goBack]="true"></app-top-bar>
+
+<div class="page-wrapper">
+
+
+  <div class="scanner-shell" [hidden]="!hasDevices">
+
+
+    <zxing-scanner #scanner start="true" [device]="currentDevice" (scanSuccess)="handleQrCodeResult($event)"
+                   [formats]="['QR_CODE', 'EAN_13', 'CODE_128', 'DATA_MATRIX']"></zxing-scanner>
+
 
     <header>
       <select (change)="onDeviceSelectChange($event.target.value)">
         <option value="" [selected]="!currentDevice">No Device Selected</option>
-        <option *ngFor="let device of availableDevices" [value]="device.deviceId" [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{ device.label }}</option>
-          </select>
+        <option *ngFor="let device of availableDevices" [value]="device.deviceId"
+                [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{ device.label }}</option>
+      </select>
     </header>
 
-    <zxing-scanner #scanner start="true" [device]="currentDevice" (scanSuccess)="handleQrCodeResult($event)" [formats]="['QR_CODE', 'EAN_13', 'CODE_128', 'DATA_MATRIX']"></zxing-scanner>
 
     <section class="results" *ngIf="qrResultString">
       <small>Result</small>
@@ -55,21 +65,24 @@
   <footer>
     <table class="table-scanner-state">
       <thead>
-        <tr>
-          <th>Status</th>
-          <th>Property</th>
-        </tr>
+      <tr>
+        <th>Status</th>
+        <th>Property</th>
+      </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>{{ stateToEmoji(hasDevices) }}</td>
-          <td>Devices</td>
-        </tr>
-        <tr>
-          <td>{{ stateToEmoji(hasPermission) }}</td>
-          <td>Permissions</td>
-        </tr>
+      <tr>
+        <td>{{ stateToEmoji(hasDevices) }}</td>
+        <td>Devices</td>
+      </tr>
+      <tr>
+        <td>{{ stateToEmoji(hasPermission) }}</td>
+        <td>Permissions</td>
+      </tr>
       </tbody>
     </table>
+    <!--
     <p class="ng-version">Angular version: {{ ngVersion }}</p>
+    -->
   </footer>
+</div>

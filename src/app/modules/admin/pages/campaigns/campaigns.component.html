@@ -27,8 +27,8 @@
           <td>{{ storeEvent.date | date: 'short' }}</td>
           <td>{{ storeEvent._nInvited }}</td>
           <td>{{ storeEvent._nParticipants }}</td>
-          <td>
-            <button class="btn" [routerLink]="['events/', storeEvent.code]">Vedi dettagli</button>
+          <td class="campaign-section__content__table-action">
+            <button class="btn btn--text" [routerLink]="['events/', storeEvent.code]">Vedi dettagli</button>
           </td>
         </tr>
         </tbody>

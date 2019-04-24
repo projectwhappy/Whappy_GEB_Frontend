@@ -17,13 +17,18 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.cdk-overlay-container .cdk-overlay-connected-position-bounding-box .cdk-overlay-pane .owl-dt-container {
-    transform: scale(2.5,2.5) !important;
-    -webkit-transform: scale(2.5,2.5) !important;
-    -moz-transform: scale(2.5,2.5) !important;
-    -o-transform: scale(2.5,2.5) !important;
-    -ms-transform: scale(2.5,2.5) !important;
+
+// styling ng-pick-datetime
+
+.owl-dt-container {
+  font-size: 1.8rem !important;
 }
-// .cdk-overlay-container .cdk-overlay-connected-position-bounding-box .cdk-overlay-pane{
-//     // top:0px;
-// }
+
+.owl-dt-container-buttons {
+  height: auto !important;
+}
+
+.owl-dt-container-control-button {
+  font-size: 1.4em !important;
+  padding: .6em !important;
+}

@@ -24,6 +24,8 @@
     cursor: pointer;
 
     .top-bar__nav-open__icon {
+      width: 32px; // svg rem bug
+      height: 32px; // svg rem bug
       height: 3.2rem;
       width: 3.2rem;
     }

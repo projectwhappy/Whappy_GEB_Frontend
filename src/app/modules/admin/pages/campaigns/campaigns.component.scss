@@ -1,3 +1,6 @@
+// Our default
+@import "~src/styles/common";
+
 .campaign-section {
   margin-bottom: 4.8rem;
 
@@ -16,6 +19,7 @@
     padding: 2.4rem 0;
 
     table {
+      color: $text-secondary;
       width: 100%;
 
       td {
@@ -42,4 +46,8 @@
       }
     }
   }
+}
+
+.campaign-section__content__table-action {
+  text-align: center;
 }

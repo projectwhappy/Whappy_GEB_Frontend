@@ -3,9 +3,13 @@
   <h1 class="page__title">Dettagli Evento</h1>
 
   <div class="event-details__preview">
-    <div class="event-details__preview__img-wrapper" *ngIf="eventWP?._bannerUrl">
-      <div class="event-details__preview__img" [ngStyle]="{ 'background-image': 'url(' + serverAPI + eventWP._bannerUrl + ')' }">
-      </div>
+    <div class="event-details__preview__img-wrapper">
+      <ng-container *ngIf="eventWP?._bannerUrl">
+        <div class="event-details__preview__img"
+             [ngStyle]="{ 'background-image': 'url(' + serverAPI + eventWP._bannerUrl + ')' }">
+        </div>
+      </ng-container>
+
     </div>
     <div class="event-details__preview__info">
       <h2 class="event-details__preview__info__title">{{ eventWP?.label }}</h2>

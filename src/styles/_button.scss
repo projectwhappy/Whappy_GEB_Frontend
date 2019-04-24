@@ -2,31 +2,16 @@
 
 .btn {
   display: inline-block;
-  padding: 1rem 1.6rem;
+  padding: 1rem 2.4rem;
   text-align: center;
   cursor: pointer;
 
   border: 1px solid $primary_color_solid;
   background-color: $primary_color_solid;
+  border-radius: .2rem;
   color: white;
   font-size: 1.8rem;
 
-  // For Loading animation
-  position: relative;
-
-
-  /*
-  &:after {
-    content: " ";
-    position: absolute;
-    background-color: #CC9900;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 0;
-  }
-  */
 
   &:hover {
     border: 1px solid $primary_color_solid_hover;
@@ -44,19 +29,21 @@
   }
 
   &.btn-loading {
-    background-color: red;
-
-      //animation: btn-loading-animation 1s ease infinite;
-
+    animation: btn-loading-pulse 1s infinite;
 
   }
 
-  /*
-  @keyframes btn-loading-animation {
-    0%   {background-size: 0 100%}
-    100% {background-size: 100% 100%}
+  @keyframes btn-loading-pulse {
+    0% {
+      background-color: $primary_color_solid;
+    }
+    70% {
+      background-color: $primary_color_solid_hover;
+    }
+    100% {
+      background-color: $primary_color_solid;
+    }
   }
-\ */
 
 }
 
