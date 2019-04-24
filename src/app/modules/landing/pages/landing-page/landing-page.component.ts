@@ -11,6 +11,7 @@ import * as moment from 'moment';
 import { EventWithParticipant } from 'src/app/core/models/eventWithParticipant';
 import { Participant } from 'src/app/core/models/participant';
 import { EventService } from 'src/app/core/http/event.service';
+import { environment } from 'src/environments/environment';
 
 
 export interface InviteCodes {
@@ -51,6 +52,7 @@ export class LandingPageComponent implements OnInit {
         this.eventService.getEventByEventCodeWithInvitedPerson(inviteCodes.event, inviteCodes.person, null)
           .then((e:EventWithParticipant) => {
             this.eventWithParticipant = e;
+            this.eventWithParticipant._bannerUrl = environment.serverAPI + this.eventWithParticipant._bannerUrl;
 
             if (this.eventWithParticipant.participant.confirmed) {
               this.eventService.getInvitationQRCode(inviteCodes.event, inviteCodes.person)

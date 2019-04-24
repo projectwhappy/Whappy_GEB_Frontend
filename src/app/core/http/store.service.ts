@@ -7,64 +7,7 @@ import {environment} from '../../../environments/environment';
   providedIn: 'root'
 })
 export class StoreService {
-  private stores: Store[] = [
-    {
-      storeCode: '47f8c888-7164-42c8-8344-9a2cef95dd1a',
-      banner: '',
-      label: 'Store name test',
-      description: 'string',
-      address: {
-        name: 'string',
-        address: 'string', // street and number
-        city: 'string',
-        zipcode: 'string',
-        province: 'string',
-        country: 'string',
-      },
-    },
-    {
-      storeCode: '2222-22',
-      banner: '',
-      label: 'Store name test 2',
-      description: 'string',
-      address: {
-        name: 'string',
-        address: 'string', // street and number
-        city: 'string',
-        zipcode: 'string',
-        province: 'string',
-        country: 'string',
-      },
-    },
-    {
-      storeCode: '3333-33',
-      banner: '',
-      label: 'Store name test 3',
-      description: 'string',
-      address: {
-        name: 'string',
-        address: 'string', // street and number
-        city: 'string',
-        zipcode: 'string',
-        province: 'string',
-        country: 'string',
-      },
-    },
-    {
-      storeCode: '4444-4',
-      banner: '',
-      label: 'Store name test 4',
-      description: 'string',
-      address: {
-        name: 'string',
-        address: 'string', // street and number
-        city: 'string',
-        zipcode: 'string',
-        province: 'string',
-        country: 'string',
-      },
-    }
-  ];
+  private stores: Store[]
 
   constructor(
     private http: HttpClient
@@ -72,7 +15,9 @@ export class StoreService {
   }
 
   public async getStores() {
-    return this.stores;
+
+    return this.http.get( environment.serverAPI + '/stores').toPromise();
+    // return this.stores;
   }
 
 

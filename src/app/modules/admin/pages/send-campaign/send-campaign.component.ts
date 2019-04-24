@@ -90,14 +90,14 @@ export class SendCampaignComponent implements OnInit {
     // Chiedere a luca, le modifiche che faccio alla variabile formValue influiscono anche su form.value
 
     const selectedStores = this.form.getRawValue().stores
-      .map((checked, index) => checked ? this.stores[index].storeCode : null)
+      .map((checked, index) => checked ? this.stores[index].code : null)
       .filter(value => value !== null);
 
     let formValues = this.form.getRawValue();
     formValues.stores = selectedStores;
     delete formValues.selectAll; // da vedere, fa problemi
     console.log(this.form.value.stores);
-    console.log(formValues.stores);
+    console.log(formValues);
 
     this.communicationService.getTargetedPeopleByEventCode(this.campaignCode, {
       ...formValues,
@@ -111,7 +111,7 @@ export class SendCampaignComponent implements OnInit {
 
   public sendCampaign() {
     const selectedStores = this.form.getRawValue().stores
-      .map((checked, index) => checked ? this.stores[index].storeCode : null)
+      .map((checked, index) => checked ? this.stores[index].code : null)
       .filter(value => value !== null);
     const vals = this.form.getRawValue();
     vals.stores = selectedStores;

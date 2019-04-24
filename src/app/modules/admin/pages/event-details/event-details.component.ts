@@ -5,6 +5,7 @@ import {Store} from '../../../../core/models/store';
 import {Participant} from '../../../../core/models/participant';
 import {StoreService} from '../../../../core/http/store.service';
 import { EventWithParticipants } from 'src/app/core/models/eventWithParticipants';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-event-details',
@@ -33,10 +34,10 @@ export class EventDetailsComponent implements OnInit {
     this.eventWP$ = this.eventService.getEventByEventCodeWithInvitedPeopleInvited(this.eventCode)
       .then((e:EventWithParticipants) => {
 
-      
+
         // Assign event value
         this.eventWP = e;
-        console.log(e);
+        this.eventWP._bannerUrl = environment.serverAPI + this.eventWP._bannerUrl;
 
         // Create an array of confirmed people
         this.arrayOfConfirmedPeople = this.eventWP.participants.list.filter((el) => {
