@@ -30,16 +30,16 @@ export class CreateEventComponent implements OnInit {
     this.form = this.fb.group(
       {
         banner: ['', Validators.required],
-        label: ['Evento bello', Validators.required],
-        description: ['Proprio bello', Validators.required],
+        label: ['', Validators.required],
+        description: ['', Validators.required],
         date: ['', Validators.required],
         address: fb.group(
           {
-            name: ['Villa blu', Validators.required],
-            address: ['via blu, 3', Validators.required],
-            city: ['Blulandia', Validators.required],
-            zipcode: ['35143', Validators.required],
-            province: ['Blu', Validators.required],
+            name: ['', Validators.required],
+            address: ['', Validators.required],
+            city: ['', Validators.required],
+            zipcode: ['', Validators.required],
+            province: ['', Validators.required],
             country: ['IT', Validators.required],
           }
         ),
@@ -50,7 +50,7 @@ export class CreateEventComponent implements OnInit {
     this.storeService.getStores().then((stores: Store[]) => {
       this.stores = stores;
       this.form.patchValue({
-        store: this.stores[0].storeCode,
+        store: this.stores[0].code,
       });
     });
   }

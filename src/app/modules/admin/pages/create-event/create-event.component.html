@@ -58,7 +58,7 @@
         <span class="input__label">Store</span>
         <div *ngFor="let store of stores">
           <label>
-            <input type="radio" [value]='store.storeCode' formControlName="store">
+            <input type="radio" [value]='store.code' formControlName="store">
             <span>{{store.label}}</span>
           </label>
         </div>
