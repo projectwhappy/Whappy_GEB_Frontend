@@ -32,7 +32,7 @@ export class ChooseStoreComponent implements OnInit {
   public storeSelected(store: Store) {
     const dialogRef = this.dialog.open(StoreConfirmDialogComponent, {
       width: 'calc(100% - 9.6rem)',
-      data: {cde: store.storeCode}
+      data: {cde: store.code}
     });
 
   }
