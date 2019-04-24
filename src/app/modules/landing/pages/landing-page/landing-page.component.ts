@@ -34,6 +34,7 @@ export class LandingPageComponent implements OnInit {
   public participant: Participant;
   public invitationQRImage: string;
   public inviteCodes: InviteCodes;
+  public serverAPI:string = environment.serverAPI;
 
   constructor(
     public eventService: EventService,
@@ -52,7 +53,6 @@ export class LandingPageComponent implements OnInit {
         this.eventService.getEventByEventCodeWithInvitedPerson(inviteCodes.event, inviteCodes.person, null)
           .then((e:EventWithParticipant) => {
             this.eventWithParticipant = e;
-            this.eventWithParticipant._bannerUrl = environment.serverAPI + this.eventWithParticipant._bannerUrl;
 
             if (this.eventWithParticipant.participant.confirmed) {
               this.eventService.getInvitationQRCode(inviteCodes.event, inviteCodes.person)

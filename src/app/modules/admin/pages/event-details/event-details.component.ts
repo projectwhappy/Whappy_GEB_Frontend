@@ -19,7 +19,7 @@ export class EventDetailsComponent implements OnInit {
   public storeInfo: Store;
   public eventWP$: any; // better way?
   public storeInfo$: any; // better way?
-
+  public serverAPI:string = environment.serverAPI;
 
   constructor(
     public eventService: EventService,
@@ -37,7 +37,6 @@ export class EventDetailsComponent implements OnInit {
 
         // Assign event value
         this.eventWP = e;
-        this.eventWP._bannerUrl = environment.serverAPI + this.eventWP._bannerUrl;
 
         // Create an array of confirmed people
         this.arrayOfConfirmedPeople = this.eventWP.participants.list.filter((el) => {
