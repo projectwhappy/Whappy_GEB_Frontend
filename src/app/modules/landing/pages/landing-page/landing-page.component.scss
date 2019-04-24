@@ -69,13 +69,19 @@
 
       .event-booking__info-container__data__icon {
         margin-right: .8rem;
+        height: 24px; // svg rem bug
+        width: 24px; // svg rem bug
+        height: 2.4rem;
+        width: 2.4rem;
       }
     }
 
   }
 
   .event-booking__call-container {
-    align-self: flex-end;
+    @media only screen and (max-width: $break_phone) {
+      align-self: flex-end;
+    }
   }
 
   .event-booking__qr-container {
@@ -94,7 +100,7 @@
 // Countdown component
 .countdown-container {
   text-align: center;
-  margin: 4.8rem 0;
+  margin: 4.8rem 0 9.6rem 0;
 
   .countdown-container__title {
     margin-bottom: .6rem;
