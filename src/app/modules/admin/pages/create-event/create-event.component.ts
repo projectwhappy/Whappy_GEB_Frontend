@@ -62,22 +62,16 @@ export class CreateEventComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
       this.banner = file;
+      this.banner.name = encodeURI(this.banner.name);
       const reader = new FileReader();
       reader.onload = (e) => {
         this.imageSrc = reader.result;
       };
       reader.readAsDataURL(file);
-
-      const reader1 = new FileReader();
-      reader1.onload = (e) => {
-        this.bannerContent = reader1.result;
-      };
-      reader1.readAsArrayBuffer(file);
     }
   }
 
   public parseDate(date: Date): string {
-    console.log(date);
     let year: number = date.getFullYear();
     let month: number = date.getMonth()+1;
     let day: number = date.getDate();
@@ -85,20 +79,12 @@ export class CreateEventComponent implements OnInit {
     let minutes: number = date.getMinutes();
 
     return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + '00';
-    // console.log(this.formatDate);
   }
 
   submitEvent() {
     const vals = this.form.getRawValue();
     this.isLoading = true;
-    // if(moment(this.formatDate, 'MM/DD/YYYY HH:MM:SS',true).isValid()){
-    // let stringDateToParse = moment(vals.date).format("MM-DD-YYYY HH:MM:SS").toString();
-    // console.log(stringDateToParse);
-    // let dateToParse = new Date(stringDateToParse);
-    // console.log(dateToParse);
     let parsedDate = this.parseDate(vals.date);
-    console.log(parsedDate);
-    // }
     this.eventServices.createNewEvent({
       ...vals,
       banner: this.banner,
