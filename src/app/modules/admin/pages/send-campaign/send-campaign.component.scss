@@ -23,6 +23,13 @@
   align-items: center;
 }
 
+.input__checkbox__icon-svg {
+  width: 24px; // rem bug 
+  height: 24px; // rem bug
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
 .checkbox-store-list {
   padding-left: 2.4rem;
 }

@@ -2,7 +2,7 @@
 
 .event-details__preview {
   display: flex;
-  margin-bottom: 4.8rem;
+  margin-bottom: 9.6rem;
 
   .event-details__preview__img-wrapper {
     width: 24rem;
@@ -34,6 +34,10 @@
         align-items: center;
 
         .event-details__preview__info__data__icon {
+          width: 24px; // rem bug
+          height: 24px; // rem bug
+          width: 2.4rem;
+          height: 2.4rem;
           margin-right: 1.2rem;
         }
       }
