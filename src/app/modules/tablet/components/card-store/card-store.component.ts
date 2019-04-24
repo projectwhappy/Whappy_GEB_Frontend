@@ -12,7 +12,7 @@ export class CardStoreComponent implements OnInit {
 
   constructor() {
     this.store = {
-      storeCode: 'string',
+      code: 'string',
       banner: 'string',
       label: 'string',
       description: 'string',
