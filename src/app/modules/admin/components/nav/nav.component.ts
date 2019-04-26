@@ -10,11 +10,15 @@ export class NavComponent implements OnInit {
 
   @Input() public isNavOpen: boolean;
   @Output() public closeNav = new EventEmitter();
+  public currentUserMail:string;
 
   constructor(private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUserMail = ((currentUser.mail) ? currentUser.mail : 'Guest');
+    this.currentUserMail = currentUser.mail;
   }
 
   public sendCloseNav() {

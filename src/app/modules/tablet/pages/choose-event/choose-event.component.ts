@@ -22,7 +22,8 @@ export class ChooseEventComponent implements OnInit {
   ngOnInit() {
     // GET USER STORE
     // estraggo store code sulla base del token salvato in localstorage implementando il service
-    let userToken = JSON.parse(localStorage.getItem('currentUser'));
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let userToken = currentUser.token;
 
     this.storeService.getStoreCodeByUser(userToken).then(
       (_storeCode: string) => {

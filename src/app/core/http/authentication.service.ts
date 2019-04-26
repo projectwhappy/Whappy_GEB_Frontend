@@ -14,10 +14,17 @@ export class AuthenticationService {
             }
         })
             .pipe(map(response => {
+
+                let currentUser = {
+                    token: response.authentication_token,
+                    mail: response.mail,
+                    role: response.role
+                };
+
                 // login successful if there's a jwt token in the response
                 if (response.authentication_token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(response.authentication_token));
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
                 }
 
                 return response.authentication_token;

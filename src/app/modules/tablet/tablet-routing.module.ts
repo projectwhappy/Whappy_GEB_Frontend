@@ -4,8 +4,9 @@ import {TabletComponent} from './tablet.component';
 import {ChooseEventComponent} from './pages/choose-event/choose-event.component';
 import {LogInComponent} from './pages/log-in/log-in.component';
 import {EventManagerComponent} from './pages/event-manager/event-manager.component';
-import { TabletGuard } from 'src/app/shared/auth/tablet.guard';
 import { QRScannerComponent } from './pages/qr-scanner/qr-scanner.component';
+import { AuthGuard } from 'src/app/shared/auth/auth.guard';
+import { Role } from 'src/app/core/enums/role';
 
 const routes: Routes = [
   {
@@ -20,17 +21,20 @@ const routes: Routes = [
       {
         path: 'events',
         component: ChooseEventComponent,
-        canActivate: [TabletGuard]
+        canActivate: [AuthGuard],
+        data: { roles: [Role.admin, Role.negozio] }
       },
       {
         path: 'events/:eventcode',
         component: EventManagerComponent,
-        canActivate: [TabletGuard]
+        canActivate: [AuthGuard],
+        data: { roles: [Role.admin, Role.negozio] }
       },
       {
         path: 'events/:eventcode/QRScanner',
         component: QRScannerComponent,
-        canActivate: [TabletGuard]
+        canActivate: [AuthGuard],
+        data: { roles: [Role.admin, Role.negozio] }
       },
     ],
   }
