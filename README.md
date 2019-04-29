@@ -1,27 +1,63 @@
 # WappyGeb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
+This project was made using [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
 
-## Development server
+CONFIGURATION
+------------
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Back-end envinronment
 
-## Code scaffolding
+You will need to change the host address in the environment file `src/environments/environments.ts`.
+You should find a sample at `src/environments/environments.sample.ts`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You will set it up like the following:
+```typescript
+export const environment = {
+  production: false,
+  serverAPI: 'http://8.8.8.8:8888',
+};
+```
 
-## Build
+COMMANDS
+------------
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Update dependencies
 
-## Running unit tests
+You may need to update project dependencies, before running it.
+In order to do that, you will need to use the following command:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+~~~
+npm install
+~~~
 
-## Running end-to-end tests
+### Run it
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+To run the server, you will need to use the following command:
 
-## Further help
+~~~
+ng serve --host YOUR_HOSTNAME --port YOUR_PORT
+~~~
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+or if you configure package.json by changing the following line
+
+~~~
+"start": "ng serve --host YOUR_HOSTNAME --port YOUR_PORT",
+~~~
+
+you can then run it with the following command:
+
+~~~
+npm start
+~~~
+
+The app will automatically reload if you change any of the source files.
+
+## Build it
+
+To build the project, you will need to use the following command:
+
+~~~
+ng build
+~~~
+
+The build artifacts will be stored in the `dist/` directory.
