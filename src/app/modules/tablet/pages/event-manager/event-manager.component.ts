@@ -104,7 +104,7 @@ export class EventManagerComponent implements OnInit {
         width: '300px',
         data: {
           participant,
-          eventCode: this.event.code,
+          eventCode: this.eventCode,
           title: 'TITLE',
           text: 'TEXT'
         }
