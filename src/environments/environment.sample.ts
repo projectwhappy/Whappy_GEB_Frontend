@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  serverAPI: 'http://8.8.8.8:8888',
+  serverAPI: 'http://8.8.8.8:8888/backend/web',
+  serverFileUrl: 'http://8.8.8.8:8888/files',
 };
 
 /*

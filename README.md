@@ -11,10 +11,17 @@ You will need to change the host address in the environment file `src/environmen
 You should find a sample at `src/environments/environments.sample.ts`.
 
 You will set it up like the following:
+
+serverAPI is the base url needed to call the backend APIs
+
+serverFileUrl is the base url where files will be stored
+(so if files folder is on the root of the server, then it will be something like http://8.8.8.8:8888/files)
+
 ```typescript
 export const environment = {
   production: false,
-  serverAPI: 'http://8.8.8.8:8888',
+  serverAPI: 'http://8.8.8.8:8888/backend/web',
+  serverFileUrl: 'http://8.8.8.8:8888/files',
 };
 ```
 

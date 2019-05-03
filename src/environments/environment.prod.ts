@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  serverAPI: 'https://vlad.devgeb.whappy.it',
+  serverAPI: 'http://vlad.devgeb.whappy.it/backend/web',
+  serverFileUrl: 'http://vlad.devgeb.whappy.it/files',
 };

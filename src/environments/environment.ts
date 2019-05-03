@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
-  serverAPI: 'https://vlad.devgeb.whappy.it/backend/web',
-  serverFileUrl: 'https://vlad.devgeb.whappy.it',
-  // serverAPI: 'http://192.168.7.117:8888',
+  // serverAPI: 'https://vlad.devgeb.whappy.it/backend/web',
+  // serverFileUrl: 'https://vlad.devgeb.whappy.it/files',
+  serverAPI: 'http://192.168.7.117:8888',
+  serverFileUrl: 'http://192.168.7.117:8888/files',
 };
 
 /*
