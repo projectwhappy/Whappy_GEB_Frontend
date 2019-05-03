@@ -6,7 +6,7 @@
     <div class="event-details__preview__img-wrapper">
       <ng-container *ngIf="eventWP?._bannerUrl">
         <div class="event-details__preview__img"
-             [ngStyle]="{ 'background-image': 'url(' + serverAPI + eventWP._bannerUrl + ')' }">
+             [ngStyle]="{ 'background-image': 'url(' + serverFileUrl + eventWP._bannerUrl + ')' }">
         </div>
       </ng-container>
 

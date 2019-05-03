@@ -35,6 +35,7 @@ export class LandingPageComponent implements OnInit {
   public invitationQRImage: string;
   public inviteCodes: InviteCodes;
   public serverAPI:string = environment.serverAPI;
+  public serverFileUrl:string = environment.serverFileUrl;
 
   constructor(
     public eventService: EventService,

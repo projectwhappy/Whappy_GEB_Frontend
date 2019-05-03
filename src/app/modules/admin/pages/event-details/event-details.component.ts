@@ -20,6 +20,7 @@ export class EventDetailsComponent implements OnInit {
   public eventWP$: any; // better way?
   public storeInfo$: any; // better way?
   public serverAPI:string = environment.serverAPI;
+  public serverFileUrl:string = environment.serverFileUrl;
 
   constructor(
     public eventService: EventService,

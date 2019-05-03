@@ -4,7 +4,7 @@
     <p class="membership-text__store">{{eventWithParticipant?._storeName}}</p>
   </div>
   <div class="event__img-wrapper" *ngIf="eventWithParticipant?._bannerUrl">
-    <div class="event__img" [ngStyle]="{ 'background-image': 'url(' + serverAPI + eventWithParticipant._bannerUrl + ')' }"></div>
+    <div class="event__img" [ngStyle]="{ 'background-image': 'url(' + serverFileUrl + eventWithParticipant._bannerUrl + ')' }"></div>
   </div>
 </div>
 

@@ -11,6 +11,7 @@ export class CardEventComponent implements OnInit {
   @Input() public storeEvent: StoreEvent;
   @Output() public isSelected = new EventEmitter();
   public serverAPI:string = environment.serverAPI;
+  public serverFileUrl:string = environment.serverFileUrl;
 
   constructor() {
   }
