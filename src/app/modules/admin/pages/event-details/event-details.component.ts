@@ -6,6 +6,7 @@ import {Participant} from '../../../../core/models/participant';
 import {StoreService} from '../../../../core/http/store.service';
 import { EventWithParticipants } from 'src/app/core/models/eventWithParticipants';
 import { environment } from 'src/environments/environment';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-event-details',
@@ -35,7 +36,7 @@ export class EventDetailsComponent implements OnInit {
     this.eventWP$ = this.eventService.getEventByEventCodeWithInvitedPeopleInvited(this.eventCode)
       .then((e:EventWithParticipants) => {
 
-
+        e.date = moment.unix(e.date as number).toDate().toString();
         // Assign event value
         this.eventWP = e;
 
@@ -43,6 +44,13 @@ export class EventDetailsComponent implements OnInit {
         this.arrayOfConfirmedPeople = this.eventWP.participants.list.filter((el) => {
           return el.confirmed;
         });
+
+        for (let key in this.arrayOfConfirmedPeople) {
+          this.arrayOfConfirmedPeople[key].confirmed = moment.unix(this.arrayOfConfirmedPeople[key].confirmed as number).toDate().toString();
+          this.arrayOfConfirmedPeople[key].checked_in = moment.unix(this.arrayOfConfirmedPeople[key].checked_in as number).toDate().toString();
+        }
+
+        console.log(this.arrayOfConfirmedPeople);
 
         // Get store info
         this.storeInfo$ = this.storeService.getStoreByStoreCode(this.eventWP.store).then(

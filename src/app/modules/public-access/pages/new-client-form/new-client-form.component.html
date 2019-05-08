@@ -45,9 +45,11 @@
       </div>
 
       <div class="new-client-form__layout--row">
-        <label class="new-client-form__input-label input__label">
-          <span>Date</span> <br/>
-          <input class="input-text new-client-form__input" type="date" name="birthDate" formControlName="birthDate">
+        <label class="new-client-form__layout--item-short">
+          <span>Birth date</span> <br/>
+
+          <input [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="Date" class="input-text new-client-form__input" name="birthDate" formControlName="birthDate">
+          <owl-date-time [pickerType]="'calendar'" #dt2 [pickerMode]="'dialog'" ></owl-date-time>
           <span *ngIf="isControlValid(f.birthDate)">Error</span>
         </label>
       </div>

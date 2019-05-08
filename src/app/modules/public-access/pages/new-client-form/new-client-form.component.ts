@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {PeopleService} from '../../../../core/http/people.service';
 import {MatDialog} from '@angular/material';
 import {ConfirmDialogComponent} from '../../../../shared/components/confirm-dialog/confirm-dialog.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-new-client-form',
@@ -46,14 +47,15 @@ export class NewClientFormComponent implements OnInit {
 
 
   public doAction() {
-    const vals = this.form.getRawValue();
-    console.log(vals);
+    let vals = this.form.getRawValue();
+
+    vals.birthDate = moment(vals.birthDate).unix();
     if (this.form.valid) {
       this.peopleService
         .createNewPeople({
           ...vals,
           preferredCommunication: 'mail',
-          newsletterAcceptance: new Date(),
+          newsletterAcceptance: moment(new Date()).unix(),
         })
         .then(() => {
           const dialogConfirm = this.dialog.open(ConfirmDialogComponent, {

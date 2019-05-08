@@ -53,7 +53,9 @@ export class LandingPageComponent implements OnInit {
 
         this.eventService.getEventByEventCodeWithInvitedPerson(inviteCodes.event, inviteCodes.person, null)
           .then((e:EventWithParticipant) => {
+            e.date = moment.unix(e.date as number).toDate().toString();
             this.eventWithParticipant = e;
+
 
             if (this.eventWithParticipant.participant.confirmed) {
               this.eventService.getInvitationQRCode(inviteCodes.event, inviteCodes.person)

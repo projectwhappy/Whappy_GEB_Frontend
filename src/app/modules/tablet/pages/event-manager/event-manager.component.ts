@@ -5,6 +5,7 @@ import {EventConfirmDialogComponent} from '../../components/event-confirm-dialog
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Participant} from '../../../../core/models/participant';
 import { EventWithParticipants } from 'src/app/core/models/eventWithParticipants';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-event-manager',
@@ -40,9 +41,17 @@ export class EventManagerComponent implements OnInit {
           (response: any) => {
             let person: Participant;
             person = response.participant;
+            if (person.confirmed) {
+              person.confirmed = moment.unix(person.confirmed as number).toDate().toString();
+            }
+            if (person.checked_in) {
+              person.checked_in = moment.unix(person.checked_in as number).toDate().toString();
+            }
             this.confirmParticipant(person);
             // console.log(person);
             // alert("C'è il QR CODE! "+params['qrCode']);
+        }, (err) => {
+          console.log(err);
         });
       }
   });
@@ -52,12 +61,22 @@ export class EventManagerComponent implements OnInit {
     this.eventService.getEventByEventCodeWithInvitedPeopleConfirmed(this.eventCode)
       .then((event: EventWithParticipants) => {
         // Assign event value
+        event.date = moment.unix(event.date as number).toDate().toString();
         this.event = event;
 
         // Create an array of checked people
         this.arrayOfCheckedPeople = this.event.participants.list.filter( (el) => {
           return el.checked_in;
         });
+        for (let key in this.arrayOfCheckedPeople) {
+          if (this.arrayOfCheckedPeople[key].confirmed) {
+            this.arrayOfCheckedPeople[key].confirmed = moment.unix(this.arrayOfCheckedPeople[key].confirmed as number).toDate().toString();
+          }
+          if (this.arrayOfCheckedPeople[key].checked_in) {
+            this.arrayOfCheckedPeople[key].checked_in = moment.unix(this.arrayOfCheckedPeople[key].checked_in as number).toDate().toString();
+          }
+        }
+
       }, (err) => {
         console.log(err);
       });
@@ -99,6 +118,7 @@ export class EventManagerComponent implements OnInit {
   }
 
   public confirmParticipant(participant) {
+    // console.log(participant);
     if (!participant.checked_in) {
       const dialogRef = this.dialog.open(EventConfirmDialogComponent, {
         width: '300px',

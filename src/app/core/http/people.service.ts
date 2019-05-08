@@ -8,8 +8,8 @@ export interface CreatePerson {
   phoneNumber: string;
   mail: string;
   gender: string;
-  birthDate: string;
-  newsletterAcceptance: string;
+  birthDate: string|number;
+  newsletterAcceptance: string|number;
   preferredCommunication: string;
 }
 

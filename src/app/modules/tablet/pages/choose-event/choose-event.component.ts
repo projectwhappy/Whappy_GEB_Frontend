@@ -3,7 +3,7 @@ import {StoreEvent} from '../../../../core/models/store-event';
 import {Router} from '@angular/router';
 import { StoreService } from 'src/app/core/http/store.service';
 import { EventService } from 'src/app/core/http/event.service';
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-choose-event',
@@ -29,6 +29,9 @@ export class ChooseEventComponent implements OnInit {
       (_storeCode: string) => {
 
         this.eventService.getAllEvents(_storeCode).then( (storeEvents: StoreEvent[]) => {
+          for (let key in storeEvents) {
+            storeEvents[key].date = moment.unix(storeEvents[key].date as number).toDate().toString();
+          }
           this.storeEvents = storeEvents;
         });
 

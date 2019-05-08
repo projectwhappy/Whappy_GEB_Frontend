@@ -24,7 +24,7 @@
         <tr *ngFor="let storeEvent of storeEvents">
           <td>{{ storeEvent.label }}</td>
           <td>{{ storeEvent._storeName }}</td>
-          <td>{{ storeEvent.date | date: 'short' }}</td>
+          <td>{{ storeEvent.date | date: 'medium': undefined : 'it' }}</td>
           <td>{{ storeEvent._nInvited }}</td>
           <td>{{ storeEvent._nParticipants }}</td>
           <td class="campaign-section__content__table-action">

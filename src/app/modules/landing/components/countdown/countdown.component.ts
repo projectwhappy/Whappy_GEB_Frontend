@@ -34,10 +34,10 @@ export class CountdownComponent implements OnInit, OnDestroy {
     seconds = t % 60;
 
     return [
-      ((days === 0) ? '' : days + ' days -'),
-      hours + ' hours -',
-      minutes + ' min -',
-      seconds + ' sec'
+      ((days === 0) ? '' : days + ' giorni -'),
+      hours + ' ore -',
+      minutes + ' minuti -',
+      seconds + ' secondi'
     ].join(' ');
   }
 

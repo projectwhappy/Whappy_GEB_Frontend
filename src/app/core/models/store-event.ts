@@ -5,7 +5,7 @@ export interface StoreEvent {
   code: string;
   label: string;
   description: string;
-  date: string; // date - time
+  date: string|number; // date - time
   store: string;
   banner?: File; // No non c'è
   _bannerUrl?: string;

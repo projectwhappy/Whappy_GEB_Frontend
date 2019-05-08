@@ -7,6 +7,6 @@
 
   <div class="card__data-wrapper card-event__data-wrapper">
     <p class="card__title card-event__title">{{ storeEvent.label }}</p>
-    <p class="card__info card-event__info">{{ storeEvent.date }}</p>
+    <p class="card__info card-event__info">{{ storeEvent.date | date: 'medium': undefined : 'it' }}</p>
   </div>
 </div>

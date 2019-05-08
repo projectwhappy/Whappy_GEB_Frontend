@@ -70,20 +70,10 @@ export class CreateEventComponent implements OnInit {
     }
   }
 
-  public parseDate(date: Date): string {
-    let year: number = date.getFullYear();
-    let month: number = date.getMonth()+1;
-    let day: number = date.getDate();
-    let hours: number = date.getHours();
-    let minutes: number = date.getMinutes();
-
-    return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + '00';
-  }
-
   submitEvent() {
     const vals = this.form.getRawValue();
     this.isLoading = true;
-    let parsedDate = this.parseDate(vals.date);
+    let parsedDate = moment(vals.date).unix();
     this.eventServices.createNewEvent({
       ...vals,
       banner: this.banner,
