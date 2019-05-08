@@ -2,17 +2,28 @@
 
 <div class="page-wrapper">
   <h1 class="page__title">
-    Eventi a Flero
+    Eventi
+    <ng-container *ngIf="!showAllStores()">nello {{selectedStore.storeName}}</ng-container>
+    <ng-container *ngIf="showAllStores()">in tutti gli store</ng-container>
   </h1>
   <div class="cards-container">
+    <form [formGroup]="form" *ngIf="isAdmin">
+      <select (change)="changeStore()" (ngModel)="_Store" formControlName="store">
+          <option *ngFor="let store of storesList" [value]="store.storeCode">
+              {{store.storeName}}
+          </option>
+      </select>
+    </form>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     <div *ngFor="let storeEvent of storeEvents" class="card-wrapper" >
-
       <app-card-event
         [storeEvent]="storeEvent"
         (isSelected)="eventSelected(storeEvent)"
       >
       </app-card-event>
-
     </div>
   </div>
 </div>

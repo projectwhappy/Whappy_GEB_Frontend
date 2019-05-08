@@ -38,7 +38,7 @@ export class EventService {
     } ).toPromise();
   }
 
-  public getAllEvents(storeCode: string) {
+  public getAllEvents(storeCode?: string) {
     let queryParams = '?';
     if (storeCode) {
       queryParams += 'store=' + storeCode;
