@@ -15,8 +15,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE, OWL_D
 import { MomentDateTimeAdapter } from 'ng-pick-datetime-moment';
 
 export const MY_CUSTOM_FORMATS = {
-  parseInput: 'll, LTS',
-  fullPickerInput: 'll, LTS',
+  parseInput: 'll, LT',
+  fullPickerInput: 'll, LT',
   datePickerInput: 'll',
   timePickerInput: 'll',
   monthYearLabel: 'MMM YYYY',
